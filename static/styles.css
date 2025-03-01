@@ -172,3 +172,51 @@ h1 span {
         padding: 0.5rem 1.5rem;
     }
 }
+
+.stats-section {
+    padding: 4rem 2rem;
+    display: flex;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    background: #ecf2f7;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card.large {
+    flex: 1;
+}
+
+.stat-card h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.stat-card.large .highlight {
+    color: #ff0066;
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    flex: 1;
+}
+@media (max-width: 768px) {
+    .stats-section {
+        flex-direction: column;
+    }
+}
+
+.border-left {
+    border-left: 4px solid #ff0066;
+    padding-left: 1.5rem;
+}
