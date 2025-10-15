@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>About Me — Hacker Theme</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#020403;
+    --matrix:#00ff66;
+    --muted:#6bffb1;
+    --card-bg: rgba(0,0,0,0.55);
+    --glass: rgba(0,0,0,0.35);
+    --accent: #00e676;
+  }
+
+  /* Page */
+  html,body{height:100%;margin:0;background:var(--bg);font-family:'JetBrains Mono', monospace;color:var(--matrix);-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+  .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;position:relative;overflow:hidden;}
+
+  /* matrix canvas (full-screen falling chars) */
+  canvas#matrix {
+    position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block;filter:contrast(1.1) saturate(1.1);
+    opacity:0.18;
+  }
+
+  /* subtle scanlines */
+  .scanlines{
+    pointer-events:none;position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.03) 50%, rgba(0,0,0,0));background-size:100% 4px;z-index:1;opacity:0.45;
+  }
+
+  /* container */
+  .about-shell{position:relative;z-index:3;display:grid;grid-template-columns:1fr 420px;gap:32px;width:min(1150px,95%);align-items:start;}
+  @media (max-width:920px){.about-shell{grid-template-columns:1fr;}}
+  
+  /* left: terminal card */
+  .terminal {
+    background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.45));
+    border:1px solid rgba(0,255,118,0.08);
+    border-radius:12px;padding:26px;backdrop-filter: blur(6px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7), inset 0 0 40px rgba(0,255,118,0.02);
+    position:relative;overflow:hidden;
+  }
+
+  /* top bar lights */
+  .terminal .topbar{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+  .dot{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,0.35);box-shadow:0 0 8px rgba(0,0,0,0.6) inset}
+  .dot.r{background:#ff5252}
+  .dot.y{background:#ffb74d}
+  .dot.g{background:#69f0ae}
+
+  /* title */
+  .terminal h1{font-size:18px;margin:6px 0 14px;color:var(--muted);letter-spacing:0.6px}
+  .subtitle{font-size:12px;color:rgba(180,255,200,0.45);margin-bottom:18px}
+
+  /* typed area */
+  .typed {
+    background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.06));
+    border-radius:8px;padding:18px;font-size:14px;line-height:1.6;color:var(--matrix);
+    min-height:170px;position:relative;overflow:auto;border:1px solid rgba(0,255,118,0.03);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45), inset 0 0 40px rgba(0,255,118,0.02);
+  }
+
+  .typed .line{white-space:pre-wrap;word-break:break-word}
+  .cursor{display:inline-block;width:10px;height:18px;background:var(--matrix);margin-left:6px;vertical-align:middle;animation:blink 900ms steps(2) infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  /* flicker / glitch accent */
+  .glitch {
+    position:absolute;inset:auto 18px 18px 18px;height:6px;background:linear-gradient(90deg, rgba(0,230,118,0.06), rgba(255,255,255,0.02));
+    filter:blur(6px);opacity:0.9;mix-blend-mode:screen;pointer-events:none;
+  }
+
+  /* right panel: services / stats */
+  .right {
+    display:flex;flex-direction:column;gap:18px;
+  }
+
+  .profile-card{
+    background:linear-gradient(180deg, rgba(0,0,0,0.48), rgba(0,0,0,0.62));
+    border-radius:12px;padding:18px;border:1px solid rgba(0,255,118,0.06);box-shadow:0 18px 40px rgba(0,0,0,0.6);
+  }
+
+  .profile-title{font-size:13px;color:var(--muted);margin-bottom:10px}
+  .profile-name{font-size:20px;color:#eafff0;margin-bottom:6px}
+  .profile-desc{font-size:13px;color:rgba(180,255,200,0.6);line-height:1.5}
+
+  /* stats row */
+  .stats-row{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+  .stat-block{
+    background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.4));
+    border-radius:10px;padding:12px 14px;min-width:110px;border:1px solid rgba(0,255,118,0.03);
+    box-shadow:0 10px 24px rgba(0,0,0,0.55);
+  }
+  .stat-block .num{font-size:18px;color:var(--accent);font-weight:600}
+  .stat-block .lbl{font-size:11px;color:rgba(180,255,200,0.55);margin-top:4px}
+
+  /* services area with neon tiles */
+  .services{
+    display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;
+  }
+  .tile{
+    background:linear-gradient(180deg, rgba(0,0,0,0.38), rgba(0,0,0,0.55));
+    border-radius:8px;padding:12px;border:1px solid rgba(0,255,118,0.04);backdrop-filter:blur(4px);
+    min-height:72px;display:flex;flex-direction:column;justify-content:center;transition:transform 250ms ease, box-shadow 250ms ease;
+    position:relative;overflow:hidden;
+  }
+  .tile:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,255,118,0.06)}
+  .tile .ticon{font-size:18px;color:var(--accent);margin-bottom:6px}
+  .tile .tt{font-size:13px;color:#eafff0;margin-bottom:6px}
+  .tile .td{font-size:12px;color:rgba(180,255,200,0.55)}
+
+  /* tiny scanline overlay on tiles */
+  .tile::after{content:"";position:absolute;inset:0;background-image:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));opacity:0.03;pointer-events:none}
+
+  /* subtle outer glow */
+  .glow {
+    position:absolute;inset:-40px;pointer-events:none;background:radial-gradient(closest-side, rgba(0,255,118,0.03), transparent 40%);z-index:2;
+  }
+
+  /* small footer / commands */
+  .cmdline{margin-top:14px;font-size:12px;color:rgba(180,255,200,0.45)}
+
+  /* accessibility - reduce motion */
+  @media (prefers-reduced-motion: reduce){
+    canvas#matrix, .shape, .typed .cursor {animation:none;transition:none}
+  }
+
+  /* mobile */
+  @media (max-width:920px){
+    .about-shell{width:100%}
+    .terminal{order:2}
+    .right{order:1}
+    .services{grid-template-columns:1fr}
+    .typed{min-height:120px}
+  }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <canvas id="matrix"></canvas>
+  <div class="scanlines"></div>
+  <div class="glow"></div>
+
+  <div class="about-shell" role="region" aria-label="About me - hacker theme">
+
+    <!-- LEFT: Terminal-style about / typing -->
+    <div class="terminal" aria-hidden="false">
+      <div class="topbar">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+      </div>
+
+      <h1>&gt; about_me.exe</h1>
+      <div class="subtitle">Full‑Stack Developer · System‑minded · Open‑Source Enthusiast</div>
+
+      <div class="typed" id="typed" aria-live="polite" aria-atomic="true">
+        <!-- typed lines will appear here -->
+      </div>
+
+      <div class="glitch" aria-hidden="true"></div>
+
+      <div class="cmdline">
+        <span style="color:rgba(0,255,118,0.65)">&gt;</span> <span id="prompt">_</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: Profile card, stats, services -->
+    <aside class="right" aria-label="Profile and services">
+
+      <div class="profile-card" role="region" aria-label="Profile">
+        <div class="profile-title">IDENTITY</div>
+        <div class="profile-name">Akil Thangavel</div>
+        <div class="profile-desc">I'm a passionate full‑stack developer with a hacker mindset — I enjoy systems, automation, and clean code that just works. I build user-facing apps and robust backends, and I love contributing to open-source.</div>
+
+        <div class="stats-row">
+          <div class="stat-block">
+            <div class="num">50+</div>
+            <div class="lbl">Projects</div>
+          </div>
+          <div class="stat-block">
+            <div class="num">3+</div>
+            <div class="lbl">Years Exp</div>
+          </div>
+          <div class="stat-block">
+            <div class="num">100%</div>
+            <div class="lbl">Client Sat.</div>
+          </div>
+        </div>
+
+        <div class="services" aria-label="Services">
+          <div class="tile" title="Frontend">
+            <div class="ticon">▣</div>
+            <div class="tt">Frontend Development</div>
+            <div class="td">Modern UIs with React / Vue / Tailwind.</div>
+          </div>
+          <div class="tile" title="Backend">
+            <div class="ticon">☍</div>
+            <div class="tt">Backend Development</div>
+            <div class="td">APIs, microservices, and databases.</div>
+          </div>
+          <div class="tile" title="Mobile">
+            <div class="ticon">◩</div>
+            <div class="tt">Mobile Development</div>
+            <div class="td">Cross-platform apps with crisp UX.</div>
+          </div>
+          <div class="tile" title="Automation / Tools">
+            <div class="ticon">⌘</div>
+            <div class="tt">Automation</div>
+            <div class="td">CI/CD, bots, deploy & infra scripting.</div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<script>
+/* MATRIX BACKGROUND */
+(function matrix(){
+  const canvas = document.getElementById('matrix');
+  const ctx = canvas.getContext('2d');
+  let w = canvas.width = innerWidth;
+  let h = canvas.height = innerHeight;
+  const cols = Math.floor(w / 20);
+  const ypos = Array(cols).fill(0);
+
+  function matrixLoop(){
+    ctx.fillStyle = 'rgba(0,0,0,0.06)';
+    ctx.fillRect(0,0,w,h);
+    ctx.fillStyle = 'rgba(0,255,120,0.08)';
+    ctx.font = '15px JetBrains Mono, monospace';
+    for (let i = 0; i < ypos.length; i++) {
+      const text = String.fromCharCode(33 + Math.random()*94 | 0);
+      const x = i * 20;
+      ctx.fillText(text, x, ypos[i] * 20);
+      if (ypos[i] * 20 > h && Math.random() > 0.975) ypos[i] = 0;
+      ypos[i]++;
+    }
+  }
+
+  let raf;
+  function run(){
+    matrixLoop();
+    raf = requestAnimationFrame(run);
+  }
+  run();
+
+  addEventListener('resize', () => {
+    cancelAnimationFrame(raf);
+    w = canvas.width = innerWidth;
+    h = canvas.height = innerHeight;
+  });
+})();
+
+/* TYPING EFFECT — terminal style */
+(function typing(){
+  const lines = [
+    "> echo \"Hello — I'm Akil. I build full-stack apps, APIs and automation.\"",
+    "> skills: frontend, backend, mobile, infra, automation",
+    "> philosophy: clean code, secure defaults, pragmatic solutions",
+    "> hobbies: open-source, exploring new tech, strong coffee ☕",
+    "> status: always learning — currently exploring performant systems"
+  ];
+  const target = document.getElementById('typed');
+  const prompt = document.getElementById('prompt');
+  let li = 0, ci = 0, delay = 30;
+
+  function typeChar(){
+    if(li >= lines.length) {
+      // finished: show subtle loop: clear then retype
+      setTimeout(()=>{ target.innerHTML = ''; li = 0; ci=0; setTimeout(typeChar, 600); }, 2500);
+      return;
+    }
+    const text = lines[li];
+    if(ci <= text.length){
+      // add char
+      const safe = text.slice(0,ci).replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      target.innerHTML = '<div class="line">'+safe+'</div>';
+      ci++;
+      // variable speed for realism
+      setTimeout(typeChar, delay + Math.random()*40);
+      // update prompt
+      prompt.textContent = (ci % 2 === 0) ? '_' : ' ';
+    } else {
+      // hold then next line
+      li++; ci = 0;
+      setTimeout(typeChar, 700);
+    }
+  }
+
+  // start after small delay
+  setTimeout(typeChar, 600);
+
+})();
+
+/* small accessibility: pause animations on focus */
+window.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    // reduce matrix opacity if Esc pressed (quick "hide")
+    document.getElementById('matrix').style.opacity = '0.05';
+  }
+});
+</script>
+</body>
+</html>
