@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav {
+            background: white;
+            border-bottom: 1px solid #eee;
+            padding: 8px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+        }
+        
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+        
+        .project {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #eee;
+        }
+        
+        .project h3 {
+            margin-bottom: 10px;
+        }
+        
+        .project p {
+            margin-bottom: 10px;
+        }
+        
+        .project a {
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #333;
+        }
+        
+        .project a:hover {
+            background: #f5f5f5;
+        }
+        
+        .contact {
+            text-align: center;
+        }
+        
+        .contact a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 10px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .contact a:hover {
+            background: #f5f5f5;
+        }
+        
+        footer {
+            margin-top: 60px;
+            padding: 30px 0;
+            border-top: 1px solid #eee;
+            background: white;
+            width: 100%;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 30px;
+            padding: 0 20px;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1em;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #666;
+            text-decoration: none;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .footer-section a:hover {
+            color: #333;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 20px 0 20px;
+            border-top: 1px solid #eee;
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Akil Thangavel</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <header>
+            <h1>Akil Thangavel</h1>
+            <p class="subtitle">Software Developer</p>
+        </header>
+
+        <section id="about">
+            <h2>About</h2>
+            <p>I'm a passionate software developer with expertise in Python-based frameworks including Django, Flask, FastAPI, and data science libraries. I have experience in developing web applications, RESTful APIs, and data-driven solutions using Python ecosystem. I work with cross-functional teams to design scalable applications and also conduct seminars and workshops across colleges, sharing knowledge about Python development and modern web technologies.</p>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            
+            <div class="project">
+                <h3>Bachelor of Computer Applications (BCA)</h3>
+                <p>Vidhyasagar College of Arts and Science, Udumalapet | 2020 - 2023</p>
+                <p>Percentage: 78% - Focused on computer applications, programming fundamentals, and software development</p>
+            </div>
+            
+            <div class="project">
+                <h3>12th Grade</h3>
+                <p>BVB Matriculation Higher Secondary School, Palani | 2018 - 2020</p>
+                <p>Percentage: 88% - Completed higher secondary education with focus on science and mathematics</p>
+            </div>
+            
+            <div class="project">
+                <h3>10th Grade</h3>
+                <p>Hillock International School - CBSE, Dindigul (Sirumalai) | 2016 - 2018</p>
+                <p>Percentage: 78% - Completed secondary education with strong foundation in core subjects</p>
+            </div>
+        </section>
+
+        <section id="awards">
+            <h2>Awards & Certificates</h2>
+            
+            <div class="project">
+                <h3>Best Web Design Award</h3>
+                <p>Tech Conference 2024 | First Place</p>
+                <p>Recognized for innovative user interface design and exceptional user experience in web development</p>
+            </div>
+            
+            <div class="project">
+                <h3>Google Analytics Certified</h3>
+                <p>Google | 2023</p>
+                <p>Certified in Google Analytics for measuring and analyzing website performance and user behavior</p>
+            </div>
+            
+            <div class="project">
+                <h3>Outstanding Student Achievement</h3>
+                <p>University Name | 2023</p>
+                <p>Awarded for academic excellence and leadership in computer science program</p>
+            </div>
+            
+            <div class="project">
+                <h3>AWS Cloud Practitioner</h3>
+                <p>Amazon Web Services | 2022</p>
+                <p>Certified in cloud computing fundamentals and AWS services for scalable web applications</p>
+            </div>
+        </section>
+
+        <section id="seminars">
+            <h2>Seminars & Classes</h2>
+            
+            <div class="project">
+                <h3>Securing and Monitoring EC2 and Route 53</h3>
+                <p>Conducted across 20+ colleges in Coimbatore and Erode</p>
+                <p>Comprehensive seminar on AWS security best practices, EC2 instance management, and Route 53 DNS configuration for scalable web applications</p>
+            </div>
+            
+            <div class="project">
+                <h3>Enhancing Spring Boot Applications with RabbitMQ</h3>
+                <p>Interactive Workshop Series | 2023-2024</p>
+                <p>Hands-on workshop covering asynchronous task processing, message queuing, and microservices architecture using Spring Boot and RabbitMQ</p>
+            </div>
+            
+            <div class="project">
+                <h3>Developing Cross-Platform Desktop Applications with Swing</h3>
+                <p>Technical Training Session | 2023</p>
+                <p>Practical session on Java Swing development, GUI design principles, and creating cross-platform desktop applications</p>
+            </div>
+            
+            <div class="project">
+                <h3>Building Web Applications with Quarkus</h3>
+                <p>Advanced Development Workshop | 2023</p>
+                <p>From basics to advanced concepts in Quarkus framework, including cloud-native development and performance optimization</p>
+            </div>
+            
+            <div class="project">
+                <h3>Software Development Best Practices</h3>
+                <p>Industry Knowledge Sharing | 2022-2024</p>
+                <p>Comprehensive seminars featuring interactive learning, live demonstrations, and tailored Q&A segments on software development methodologies and industry standards</p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            
+            <div class="project">
+                <h3>Thinkorswim Algo Trading Bot</h3>
+                <p>Technologies: Java, Spring Boot, JavaScript, HTML/CSS, Redis, RabbitMQ</p>
+                <p>Developed a Java-based Thinkorswim trading bot with Spring Boot, integrating TradingView webhooks and using Redis and RabbitMQ for asynchronous task handling to automate strategies and enhance trading efficiency.</p>
+                <a href="#" target="_blank">View Project</a>
+            </div>
+            
+            <div class="project">
+                <h3>SantiagoCycleSim: Interactive Modeling and Visualization</h3>
+                <p>Technologies: Java, Spring Boot, PostgreSQL, HTML, CSS, JavaScript, Plotly.js, AWS</p>
+                <p>SantiagoCycleSim is a Java-based simulation tool using Spring Boot, modeling bicycle trips in Santiago. It processes spatial/tabular data from CSV and SHP files via geospatial libraries, transitioning to a responsive web platform with interactive route visualization and real-time heat maps.</p>
+                <a href="#" target="_blank">View Project</a>
+            </div>
+            
+            <div class="project">
+                <h3>Enterprise Application Development</h3>
+                <p>Technologies: Java, ERP Systems, Cross-functional Collaboration</p>
+                <p>Actively involved in developing and customizing enterprise applications using Java and related technologies. Responsibilities included upgrading and enhancing ERP systems, ensuring compatibility with evolving business requirements, and providing technical support and training to end-users.</p>
+                <a href="#" target="_blank">View Project</a>
+            </div>
+        </section>
+
+        <section id="blog">
+            <h2>Blog</h2>
+            
+            <div class="project">
+                <h3>Blog Post Title One</h3>
+                <p>Date: January 15, 2024</p>
+                <p>A brief excerpt from your blog post. This could be about your latest project, thoughts on web development, or any topic you're passionate about.</p>
+                <a href="#" target="_blank">Read More</a>
+            </div>
+            
+            <div class="project">
+                <h3>Blog Post Title Two</h3>
+                <p>Date: January 10, 2024</p>
+                <p>Another blog post excerpt. Share your insights, tutorials, or experiences in web development and design.</p>
+                <a href="#" target="_blank">Read More</a>
+            </div>
+            
+            <div class="project">
+                <h3>Blog Post Title Three</h3>
+                <p>Date: January 5, 2024</p>
+                <p>Your third blog post. Keep your readers engaged with valuable content about your field of expertise.</p>
+                <a href="#" target="_blank">Read More</a>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact">
+                <a href="mailto:akilthangavel@gmail.com">Email</a>
+                <a href="tel:+919488223505">Phone</a>
+                <a href="https://www.algosync.org" target="_blank">Website</a>
+                <a href="https://linkedin.com/in/akilthangavel" target="_blank">LinkedIn</a>
+            </div>
+            <p style="margin-top: 20px; color: #666;">Location: Palani, Dindigul, Tamil Nadu</p>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Me</h4>
+                <p>Passionate software developer specializing in Python-based frameworks and modern web technologies. Creating innovative solutions and sharing knowledge through workshops and seminars.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#projects">Projects</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Contact</a>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Skills</h4>
+                <p>Python & Django</p>
+                <p>Flask & FastAPI</p>
+                <p>Data Science</p>
+                <p>Web Development</p>
+                <p>API Development</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>📧 akilthangavel@gmail.com</p>
+                <p>📞 +91 9488223505</p>
+                <p>🌐 www.algosync.org</p>
+                <p>📍 Palani, Dindigul</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Akil Thangavel. All rights reserved. | Built with HTML & CSS</p>
+        </div>
+    </footer>
+</body>
+</html>
