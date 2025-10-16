@@ -6,100 +6,70 @@
   <title>Technologies</title>
   <style>
     :root {
-      --bg: #ffffff;
-      --card: #f8f9fa;
-      --text: #1a1a1a;
-      --muted: #6c757d;
-      --accent: #007bff;
-      --glow: rgba(0, 123, 255, 0.15);
-      --pill-bg: rgba(0, 0, 0, 0.03);
-      --pill-brd: rgba(0, 0, 0, 0.08);
+      --akil-tech-bg: #ffffff;
+      --akil-tech-text: #1a1a1a;
+      --akil-tech-pill-bg: rgba(0, 0, 0, 0.03);
+      --akil-tech-pill-brd: rgba(0, 0, 0, 0.08);
     }
 
     * { box-sizing: border-box; }
 
     html, body {
-      height: 100%;
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
+      background: var(--akil-tech-bg);
+      color: var(--akil-tech-text);
       font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
-    .tech-section {
-      min-height: 100dvh;
-      display: grid;
-      place-items: center;
-      padding: 48px 16px;
-    }
-
-    .card {
-      width: min(1100px, 92vw);
-      background: var(--card);
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      padding: 28px 26px 34px;
+    .akil-tech-container {
       position: relative;
+      width: 100%;
       overflow: hidden;
+      padding: 20px 0;
+      /* Fade edges with mask */
+      -webkit-mask-image: linear-gradient(to right, 
+        transparent 0%, 
+        rgba(0,0,0,1) 10%, 
+        rgba(0,0,0,1) 90%, 
+        transparent 100%);
+      mask-image: linear-gradient(to right, 
+        transparent 0%, 
+        rgba(0,0,0,1) 10%, 
+        rgba(0,0,0,1) 90%, 
+        transparent 100%);
     }
 
-
-    .title {
-      margin: 0 0 18px 0;
-      font-size: clamp(22px, 3.5vw, 30px);
-      letter-spacing: 0.4px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .akil-tech-container::before,
+    .akil-tech-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      z-index: 10;
+      pointer-events: none;
     }
 
-    .title .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #9fd3ff, #4a95ff 60%, #2468ff 100%);
-      box-shadow: 0 0 24px var(--glow);
+    .akil-tech-container::before {
+      left: 0;
+      background: linear-gradient(to right, var(--akil-tech-bg) 0%, transparent 100%);
     }
 
-    .subtitle {
-      margin: 4px 0 20px 0;
-      color: var(--muted);
-      font-size: 13px;
+    .akil-tech-container::after {
+      right: 0;
+      background: linear-gradient(to left, var(--akil-tech-bg) 0%, transparent 100%);
     }
 
-    /* Marquee Shell */
-    .marquee {
-      position: relative;
-      overflow: hidden;
-      border-radius: 14px;
-      border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(0,0,0,0.02);
-      padding: 14px 6px;
-      /* Fade edges */
-      mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0));
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, rgba(0,0,0,0));
-    }
-
-    .track {
+    .akil-tech-track {
       display: flex;
       width: max-content;
       gap: 28px;
       padding: 4px 8px;
-      /* start halfway to enable seamless wrap; we animate to 0 for left→right movement */
-      animation: scroll-right 28s linear infinite;
+      animation: akil-tech-scroll-right 28s linear infinite;
       will-change: transform;
     }
 
-    .marquee:hover .track {
-      animation-play-state: paused;
-    }
-
-    /* Duplicate rows to create a long continuous line */
-    .row {
+    .akil-tech-row {
       display: flex;
       gap: 24px;
       margin: 0;
@@ -107,15 +77,15 @@
       list-style: none;
     }
 
-    .pill {
+    .akil-tech-pill {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       padding: 16px 28px;
       border-radius: 12px;
-      background: var(--pill-bg);
-      border: 1px solid var(--pill-brd);
-      color: var(--text);
+      background: var(--akil-tech-pill-bg);
+      border: 1px solid var(--akil-tech-pill-brd);
+      color: var(--akil-tech-text);
       font-weight: 600;
       letter-spacing: 0.2px;
       font-size: clamp(12px, 1.8vw, 14px);
@@ -125,13 +95,13 @@
       position: relative;
     }
 
-    .pill:hover {
+    .akil-tech-pill:hover {
       transform: translateY(-2px);
       border-color: rgba(0,123,255,0.3);
       box-shadow: 0 6px 18px rgba(0,0,0,0.15), 0 0 0 4px rgba(0,123,255,0.08);
     }
 
-    .tech-icon {
+    .akil-tech-icon {
       width: 38px;
       height: 38px;
       display: inline-block;
@@ -140,11 +110,11 @@
       transition: filter 300ms ease;
     }
 
-    .pill:hover .tech-icon {
+    .akil-tech-pill:hover .akil-tech-icon {
       filter: grayscale(0%);
     }
 
-    .tooltip {
+    .akil-tech-tooltip {
       position: absolute;
       bottom: 100%;
       left: 50%;
@@ -164,7 +134,7 @@
       margin-bottom: 8px;
     }
 
-    .tooltip::after {
+    .akil-tech-tooltip::after {
       content: '';
       position: absolute;
       top: 100%;
@@ -174,13 +144,12 @@
       border-top-color: rgba(0, 0, 0, 0.9);
     }
 
-
-    .pill:hover .tooltip {
+    .akil-tech-pill:hover .akil-tech-tooltip {
       opacity: 1;
       visibility: visible;
     }
 
-    @keyframes scroll-right {
+    @keyframes akil-tech-scroll-right {
       /* Begin with second half visible, slide right to the start, then loop */
       0% { transform: translateX(-50%); }
       100% { transform: translateX(0%); }
@@ -188,81 +157,75 @@
 
     /* Accessibility: respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
-      .track { animation: none; transform: none; }
+      .akil-tech-track { animation: none; transform: none; }
     }
   </style>
 </head>
 <body>
-      <div class="marquee" role="region" aria-label="Scrolling list of technologies (left to right)">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="track">
+    
+        <div class="akil-tech-container">
+          <div class="akil-tech-track">
 
           <!-- Duplicate group A and B to make seamless wrap when sliding left→right -->
-          <ul class="row" aria-hidden="true">
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/html5/ff6d00" alt="HTML5" /></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/css3/2965f1" alt="CSS3" /></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/javascript/f7df1e" alt="JavaScript" /></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/typescript/3178c6" alt="TypeScript" /><span class="tooltip">TypeScript</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/react/61dafb" alt="React" /><span class="tooltip">React</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/nextdotjs/ffffff" alt="Next.js" /><span class="tooltip">Next.js</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/nodedotjs/5fa04e" alt="Node.js" /><span class="tooltip">Node.js</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/express/ffffff" alt="Express" /><span class="tooltip">Express</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB" /><span class="tooltip">MongoDB</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/postgresql/4169e1" alt="PostgreSQL" /><span class="tooltip">PostgreSQL</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/prisma/2D3748" alt="Prisma" /><span class="tooltip">Prisma</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/graphql/e10098" alt="GraphQL" /><span class="tooltip">GraphQL</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/openapiinitiative/6BA539" alt="OpenAPI" /><span class="tooltip">REST APIs</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/tailwindcss/38bdf8" alt="Tailwind CSS" /><span class="tooltip">Tailwind CSS</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/styledcomponents/DB7093" alt="Styled Components" /><span class="tooltip">Styled Components</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/sass/cc6699" alt="Sass" /><span class="tooltip">Sass</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/vite/646CFF" alt="Vite" /><span class="tooltip">Vite</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/webpack/8DD6F9" alt="Webpack" /><span class="tooltip">Webpack</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/jest/C21325" alt="Jest" /><span class="tooltip">Jest</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/playwright/45ba4b" alt="Playwright" /><span class="tooltip">Playwright</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/docker/2496ed" alt="Docker" /><span class="tooltip">Docker</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/git/f05032" alt="Git" /><span class="tooltip">Git</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/githubactions/2088FF" alt="GitHub Actions" /><span class="tooltip">CI/CD</span></li>
+          <ul class="akil-tech-row" aria-hidden="true">
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/html5/ff6d00" alt="HTML5" /></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/css3/2965f1" alt="CSS3" /></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/javascript/f7df1e" alt="JavaScript" /></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/typescript/3178c6" alt="TypeScript" /><span class="akil-tech-tooltip">TypeScript</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/react/61dafb" alt="React" /><span class="akil-tech-tooltip">React</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/nextdotjs/ffffff" alt="Next.js" /><span class="akil-tech-tooltip">Next.js</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/nodedotjs/5fa04e" alt="Node.js" /><span class="akil-tech-tooltip">Node.js</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/express/ffffff" alt="Express" /><span class="akil-tech-tooltip">Express</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB" /><span class="akil-tech-tooltip">MongoDB</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/postgresql/4169e1" alt="PostgreSQL" /><span class="akil-tech-tooltip">PostgreSQL</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/prisma/2D3748" alt="Prisma" /><span class="akil-tech-tooltip">Prisma</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/graphql/e10098" alt="GraphQL" /><span class="akil-tech-tooltip">GraphQL</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/openapiinitiative/6BA539" alt="OpenAPI" /><span class="akil-tech-tooltip">REST APIs</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/tailwindcss/38bdf8" alt="Tailwind CSS" /><span class="akil-tech-tooltip">Tailwind CSS</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/styledcomponents/DB7093" alt="Styled Components" /><span class="akil-tech-tooltip">Styled Components</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/sass/cc6699" alt="Sass" /><span class="akil-tech-tooltip">Sass</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/vite/646CFF" alt="Vite" /><span class="akil-tech-tooltip">Vite</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/webpack/8DD6F9" alt="Webpack" /><span class="akil-tech-tooltip">Webpack</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/jest/C21325" alt="Jest" /><span class="akil-tech-tooltip">Jest</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/playwright/45ba4b" alt="Playwright" /><span class="akil-tech-tooltip">Playwright</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/docker/2496ed" alt="Docker" /><span class="akil-tech-tooltip">Docker</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/git/f05032" alt="Git" /><span class="akil-tech-tooltip">Git</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/githubactions/2088FF" alt="GitHub Actions" /><span class="akil-tech-tooltip">CI/CD</span></li>
           </ul>
 
-          <ul class="row" aria-hidden="true">
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/html5/ff6d00" alt="HTML5" /></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/css3/2965f1" alt="CSS3" /></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/javascript/f7df1e" alt="JavaScript" /></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/typescript/3178c6" alt="TypeScript" /><span class="tooltip">TypeScript</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/react/61dafb" alt="React" /><span class="tooltip">React</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/nextdotjs/ffffff" alt="Next.js" /><span class="tooltip">Next.js</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/nodedotjs/5fa04e" alt="Node.js" /><span class="tooltip">Node.js</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/express/ffffff" alt="Express" /><span class="tooltip">Express</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB" /><span class="tooltip">MongoDB</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/postgresql/4169e1" alt="PostgreSQL" /><span class="tooltip">PostgreSQL</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/prisma/2D3748" alt="Prisma" /><span class="tooltip">Prisma</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/graphql/e10098" alt="GraphQL" /><span class="tooltip">GraphQL</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/openapiinitiative/6BA539" alt="OpenAPI" /><span class="tooltip">REST APIs</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/tailwindcss/38bdf8" alt="Tailwind CSS" /><span class="tooltip">Tailwind CSS</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/styledcomponents/DB7093" alt="Styled Components" /><span class="tooltip">Styled Components</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/sass/cc6699" alt="Sass" /><span class="tooltip">Sass</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/vite/646CFF" alt="Vite" /><span class="tooltip">Vite</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/webpack/8DD6F9" alt="Webpack" /><span class="tooltip">Webpack</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/jest/C21325" alt="Jest" /><span class="tooltip">Jest</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/playwright/45ba4b" alt="Playwright" /><span class="tooltip">Playwright</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/docker/2496ed" alt="Docker" /><span class="tooltip">Docker</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/git/f05032" alt="Git" /><span class="tooltip">Git</span></li>
-            <li class="pill"><img class="tech-icon" src="https://cdn.simpleicons.org/githubactions/2088FF" alt="GitHub Actions" /><span class="tooltip">CI/CD</span></li>
+          <ul class="akil-tech-row" aria-hidden="true">
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/html5/ff6d00" alt="HTML5" /></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/css3/2965f1" alt="CSS3" /></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/javascript/f7df1e" alt="JavaScript" /></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/typescript/3178c6" alt="TypeScript" /><span class="akil-tech-tooltip">TypeScript</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/react/61dafb" alt="React" /><span class="akil-tech-tooltip">React</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/nextdotjs/ffffff" alt="Next.js" /><span class="akil-tech-tooltip">Next.js</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/nodedotjs/5fa04e" alt="Node.js" /><span class="akil-tech-tooltip">Node.js</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/express/ffffff" alt="Express" /><span class="akil-tech-tooltip">Express</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB" /><span class="akil-tech-tooltip">MongoDB</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/postgresql/4169e1" alt="PostgreSQL" /><span class="akil-tech-tooltip">PostgreSQL</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/prisma/2D3748" alt="Prisma" /><span class="akil-tech-tooltip">Prisma</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/graphql/e10098" alt="GraphQL" /><span class="akil-tech-tooltip">GraphQL</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/openapiinitiative/6BA539" alt="OpenAPI" /><span class="akil-tech-tooltip">REST APIs</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/tailwindcss/38bdf8" alt="Tailwind CSS" /><span class="akil-tech-tooltip">Tailwind CSS</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/styledcomponents/DB7093" alt="Styled Components" /><span class="akil-tech-tooltip">Styled Components</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/sass/cc6699" alt="Sass" /><span class="akil-tech-tooltip">Sass</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/vite/646CFF" alt="Vite" /><span class="akil-tech-tooltip">Vite</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/webpack/8DD6F9" alt="Webpack" /><span class="akil-tech-tooltip">Webpack</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/jest/C21325" alt="Jest" /><span class="akil-tech-tooltip">Jest</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/playwright/45ba4b" alt="Playwright" /><span class="akil-tech-tooltip">Playwright</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/docker/2496ed" alt="Docker" /><span class="akil-tech-tooltip">Docker</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/git/f05032" alt="Git" /><span class="akil-tech-tooltip">Git</span></li>
+            <li class="akil-tech-pill"><img class="akil-tech-icon" src="https://cdn.simpleicons.org/githubactions/2088FF" alt="GitHub Actions" /><span class="akil-tech-tooltip">CI/CD</span></li>
           </ul>
+          </div>
         </div>
-      </div>
-
+      
 
   <script>
-    // Ensure the track starts at -50% to enable seamless left-to-right looping
+    // Ensure the akil-tech-track starts at -50% to enable seamless left-to-right looping
     (function () {
-      var track = document.querySelector('.track');
+      var track = document.querySelector('.akil-tech-track');
       if (!track) return;
       track.style.transform = 'translateX(-50%)';
     })();

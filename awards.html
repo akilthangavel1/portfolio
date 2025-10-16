@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awards & Certificates - The Achievement Chronicle</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background-color: #f8f6f0;
+            color: #2c2c2c;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .newspaper-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border: 3px solid #8B4513;
+        }
+
+        /* Header/Masthead */
+        .newspaper-header {
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 4px double #8B4513;
+            background: linear-gradient(45deg, #f8f6f0 0%, #ffffff 50%, #f8f6f0 100%);
+        }
+
+        .masthead {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #8B4513;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+            border-top: 1px solid #8B4513;
+            border-bottom: 1px solid #8B4513;
+            padding: 8px 0;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        .date-line {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #888;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .newspaper-content {
+            padding: 40px 30px;
+        }
+
+        /* Column Layout */
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .column {
+            position: relative;
+        }
+
+        .column:first-child::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: #8B4513;
+        }
+
+        /* Headlines */
+        .section-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #8B4513;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8B4513;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sub-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 15px;
+            text-decoration: underline;
+            text-decoration-color: #8B4513;
+        }
+
+        /* Award Items */
+        .award-item {
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-left: 4px solid #8B4513;
+            padding: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .award-item::before {
+            content: '★';
+            position: absolute;
+            top: -5px;
+            left: -2px;
+            color: #DAA520;
+            font-size: 1.5rem;
+        }
+
+        .award-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #8B4513;
+            margin-bottom: 8px;
+        }
+
+        .award-details {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .award-institution {
+            font-weight: 600;
+            color: #2c2c2c;
+        }
+
+        .award-year {
+            font-style: italic;
+            color: #888;
+            float: right;
+            font-size: 0.9rem;
+        }
+
+        .award-description {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+            border-left: 3px solid #DAA520;
+            padding-left: 15px;
+        }
+
+        /* Certificate Gallery */
+        .certificate-gallery {
+            margin-top: 40px;
+            border-top: 3px double #8B4513;
+            padding-top: 30px;
+        }
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .certificate-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f6f0 100%);
+            border: 2px solid #8B4513;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .certificate-icon {
+            font-size: 3rem;
+            color: #DAA520;
+            margin-bottom: 15px;
+        }
+
+        .certificate-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #8B4513;
+            margin-bottom: 10px;
+        }
+
+        .certificate-issuer {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Decorative Elements */
+        .ornament {
+            text-align: center;
+            font-size: 2rem;
+            color: #8B4513;
+            margin: 30px 0;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #8B4513, transparent);
+            margin: 30px 0;
+        }
+
+        /* Footer */
+        .newspaper-footer {
+            background-color: #8B4513;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .masthead {
+                font-size: 2.5rem;
+            }
+            
+            .columns {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .column:first-child::after {
+                display: none;
+            }
+            
+            .newspaper-content {
+                padding: 20px 15px;
+            }
+            
+            .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .masthead {
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+            
+            .section-headline {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper-container">
+        <!-- Header/Masthead -->
+        <header class="newspaper-header">
+            <h1 class="masthead">The Achievement Chronicle</h1>
+            <div class="subtitle">Excellence Recognized • Milestones Celebrated • Success Documented</div>
+            <div class="date-line">Published: October 2024 Edition</div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="newspaper-content">
+            <div class="columns">
+                <!-- Left Column - Professional Awards -->
+                <div class="column">
+                    <h2 class="section-headline">Professional Honors</h2>
+                    
+                    <div class="award-item">
+                        <div class="award-year">2024</div>
+                        <h3 class="award-title">Excellence in Innovation Award</h3>
+                        <div class="award-details">
+                            <span class="award-institution">Tech Innovation Council</span>
+                        </div>
+                        <div class="award-description">
+                            Recognized for outstanding contributions to technological advancement and innovative problem-solving approaches in software development.
+                        </div>
+                    </div>
+
+                    <div class="award-item">
+                        <div class="award-year">2023</div>
+                        <h3 class="award-title">Outstanding Leadership Recognition</h3>
+                        <div class="award-details">
+                            <span class="award-institution">Professional Development Institute</span>
+                        </div>
+                        <div class="award-description">
+                            Awarded for exceptional leadership qualities and mentorship in guiding teams towards successful project completion.
+                        </div>
+                    </div>
+
+                    <div class="award-item">
+                        <div class="award-year">2023</div>
+                        <h3 class="award-title">Best Project Implementation</h3>
+                        <div class="award-details">
+                            <span class="award-institution">Digital Solutions Awards</span>
+                        </div>
+                        <div class="award-description">
+                            Honored for delivering a complex digital solution that exceeded client expectations and industry standards.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Academic Achievements -->
+                <div class="column">
+                    <h2 class="section-headline">Academic Excellence</h2>
+                    
+                    <div class="award-item">
+                        <div class="award-year">2024</div>
+                        <h3 class="award-title">Dean's List Honor Roll</h3>
+                        <div class="award-details">
+                            <span class="award-institution">University Academic Board</span>
+                        </div>
+                        <div class="award-description">
+                            Achieved academic excellence with consistent high performance across all subjects and maintained superior GPA.
+                        </div>
+                    </div>
+
+                    <div class="award-item">
+                        <div class="award-year">2023</div>
+                        <h3 class="award-title">Research Excellence Award</h3>
+                        <div class="award-details">
+                            <span class="award-institution">Computer Science Department</span>
+                        </div>
+                        <div class="award-description">
+                            Recognized for groundbreaking research in artificial intelligence and machine learning applications.
+                        </div>
+                    </div>
+
+                    <div class="award-item">
+                        <div class="award-year">2022</div>
+                        <h3 class="award-title">Outstanding Student Achievement</h3>
+                        <div class="award-details">
+                            <span class="award-institution">Educational Excellence Foundation</span>
+                        </div>
+                        <div class="award-description">
+                            Awarded for exceptional academic performance and significant contributions to student community initiatives.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ornament">❦ ❦ ❦</div>
+
+            <!-- Certificate Gallery Section -->
+            <section class="certificate-gallery">
+                <h2 class="section-headline">Professional Certifications</h2>
+                <div class="certificate-grid">
+                    <div class="certificate-card">
+                        <div class="certificate-icon">🏆</div>
+                        <div class="certificate-name">Certified Project Manager</div>
+                        <div class="certificate-issuer">Project Management Institute</div>
+                    </div>
+
+                    <div class="certificate-card">
+                        <div class="certificate-icon">💻</div>
+                        <div class="certificate-name">Full Stack Developer</div>
+                        <div class="certificate-issuer">Tech Certification Board</div>
+                    </div>
+
+                    <div class="certificate-card">
+                        <div class="certificate-icon">🔒</div>
+                        <div class="certificate-name">Cybersecurity Specialist</div>
+                        <div class="certificate-issuer">Security Institute</div>
+                    </div>
+
+                    <div class="certificate-card">
+                        <div class="certificate-icon">🌐</div>
+                        <div class="certificate-name">Cloud Architecture</div>
+                        <div class="certificate-issuer">Cloud Computing Council</div>
+                    </div>
+
+                    <div class="certificate-card">
+                        <div class="certificate-icon">📊</div>
+                        <div class="certificate-name">Data Analytics Expert</div>
+                        <div class="certificate-issuer">Analytics Professional Society</div>
+                    </div>
+
+                    <div class="certificate-card">
+                        <div class="certificate-icon">🚀</div>
+                        <div class="certificate-name">Agile Methodologies</div>
+                        <div class="certificate-issuer">Agile Alliance Certified</div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- Additional Recognition Section -->
+            <section>
+                <h2 class="section-headline">Special Recognitions</h2>
+                <div class="columns">
+                    <div class="column">
+                        <h3 class="sub-headline">Industry Recognition</h3>
+                        <div class="award-item">
+                            <div class="award-year">2024</div>
+                            <h3 class="award-title">Rising Star in Technology</h3>
+                            <div class="award-details">
+                                <span class="award-institution">Tech Industry Magazine</span>
+                            </div>
+                        </div>
+                        
+                        <div class="award-item">
+                            <div class="award-year">2023</div>
+                            <h3 class="award-title">Innovation Champion</h3>
+                            <div class="award-details">
+                                <span class="award-institution">Future Tech Awards</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column">
+                        <h3 class="sub-headline">Community Impact</h3>
+                        <div class="award-item">
+                            <div class="award-year">2024</div>
+                            <h3 class="award-title">Community Service Excellence</h3>
+                            <div class="award-details">
+                                <span class="award-institution">Civic Engagement Society</span>
+                            </div>
+                        </div>
+                        
+                        <div class="award-item">
+                            <div class="award-year">2023</div>
+                            <h3 class="award-title">Volunteer Leadership Award</h3>
+                            <div class="award-details">
+                                <span class="award-institution">Community Development Board</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="newspaper-footer">
+            <p>© 2024 The Achievement Chronicle | Celebrating Excellence in All Endeavors</p>
+        </footer>
+    </div>
+</body>
+</html>

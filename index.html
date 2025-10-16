@@ -1,16 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Portfolio</title>
     <style>
+        :root {
+            --akil-tech-bg: #ffffff;
+            --akil-tech-text: #1a1a1a;
+            --akil-tech-pill-bg: rgba(0, 0, 0, 0.03);
+            --akil-tech-pill-brd: rgba(0, 0, 0, 0.08);
+        }
+
+        /* Technologies Section Start */
+
+
+        .akil-tech-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 40px 0;
+            /* Fade edges with mask */
+            -webkit-mask-image: linear-gradient(to right,
+                    transparent 0%,
+                    rgba(0, 0, 0, 1) 10%,
+                    rgba(0, 0, 0, 1) 90%,
+                    transparent 100%);
+            mask-image: linear-gradient(to right,
+                    transparent 0%,
+                    rgba(0, 0, 0, 1) 10%,
+                    rgba(0, 0, 0, 1) 90%,
+                    transparent 100%);
+        }
+
+        .akil-tech-container::before,
+        .akil-tech-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .akil-tech-container::before {
+            left: 0;
+            background: linear-gradient(to right, var(--akil-tech-bg) 0%, transparent 100%);
+        }
+
+        .akil-tech-container::after {
+            right: 0;
+            background: linear-gradient(to left, var(--akil-tech-bg) 0%, transparent 100%);
+        }
+
+        .akil-tech-track {
+            display: flex;
+            width: max-content;
+            gap: 28px;
+            padding: 4px 8px;
+            animation: akil-tech-scroll-right 28s linear infinite;
+            will-change: transform;
+        }
+
+        .akil-tech-row {
+            display: flex;
+            gap: 24px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .akil-tech-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 28px;
+            border-radius: 12px;
+            background: var(--akil-tech-pill-bg);
+            border: 1px solid var(--akil-tech-pill-brd);
+            color: var(--akil-tech-text);
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            font-size: clamp(12px, 1.8vw, 14px);
+            white-space: nowrap;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+            position: relative;
+        }
+
+        .akil-tech-pill:hover {
+            transform: translateY(-2px);
+            border-color: rgba(0, 123, 255, 0.3);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15), 0 0 0 4px rgba(0, 123, 255, 0.08);
+        }
+
+        .akil-tech-icon {
+            width: 38px;
+            height: 38px;
+            display: inline-block;
+            flex: 0 0 auto;
+            filter: grayscale(100%);
+            transition: filter 300ms ease;
+        }
+
+        .akil-tech-pill:hover .akil-tech-icon {
+            filter: grayscale(0%);
+        }
+
+        .akil-tech-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 300ms ease, visibility 300ms ease;
+            pointer-events: none;
+            z-index: 10;
+            margin-bottom: 8px;
+        }
+
+        .akil-tech-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .akil-tech-pill:hover .akil-tech-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @keyframes akil-tech-scroll-right {
+
+            /* Begin with second half visible, slide right to the start, then loop */
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        /* Accessibility: respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .akil-tech-track {
+                animation: none;
+                transform: none;
+            }
+        }
+
+        /* Technologies Section End */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -19,7 +179,7 @@
             margin: 0;
             padding: 0;
         }
-        
+
         nav {
             background: white;
             border-bottom: 1px solid #eee;
@@ -28,7 +188,7 @@
             top: 0;
             z-index: 100;
         }
-        
+
         .nav-container {
             width: 100%;
             margin: 0 auto;
@@ -37,14 +197,14 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             font-size: 1.5em;
             font-weight: bold;
             color: #333;
             text-decoration: none;
         }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
@@ -52,102 +212,102 @@
             padding: 0;
             gap: 30px;
         }
-        
+
         .nav-links a {
             color: #333;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
-        
+
         .nav-links a:hover {
             color: #666;
         }
-        
+
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             .nav-links {
                 gap: 20px;
             }
         }
-        
+
         .container {
             width: 100%;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         header {
             text-align: center;
             margin-bottom: 40px;
             padding: 40px 0;
             border-bottom: 1px solid #eee;
         }
-        
+
         h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
         }
-        
+
         .subtitle {
             color: #666;
             font-size: 1.2em;
         }
-        
+
         section {
             margin-bottom: 40px;
         }
-        
+
         h2 {
             font-size: 1.8em;
             margin-bottom: 20px;
             border-bottom: 2px solid #333;
             padding-bottom: 5px;
         }
-        
+
         .project {
             margin-bottom: 30px;
             padding: 20px;
             border: 1px solid #eee;
         }
-        
+
         .project h3 {
             margin-bottom: 10px;
         }
-        
+
         .project p {
             margin-bottom: 10px;
         }
-        
+
         .project a {
             color: #333;
             text-decoration: none;
             border-bottom: 1px solid #333;
         }
-        
+
         .project a:hover {
             background: #f5f5f5;
         }
-        
+
         .contact {
             text-align: center;
         }
-        
+
         .contact a {
             color: #333;
             text-decoration: none;
             margin: 0 10px;
             border-bottom: 1px solid #333;
         }
-        
+
         .contact a:hover {
             background: #f5f5f5;
         }
-        
+
         footer {
             margin-top: 60px;
             padding: 30px 0;
@@ -155,31 +315,32 @@
             background: white;
             width: 100%;
         }
-        
+
         .footer-content {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 30px;
             padding: 0 20px;
         }
-        
+
         .footer-section h4 {
             margin-bottom: 15px;
             color: #333;
             font-size: 1em;
         }
-        
-        .footer-section p, .footer-section a {
+
+        .footer-section p,
+        .footer-section a {
             color: #666;
             text-decoration: none;
             margin-bottom: 5px;
             display: block;
         }
-        
+
         .footer-section a:hover {
             color: #333;
         }
-        
+
         .footer-bottom {
             text-align: center;
             padding: 20px 20px 0 20px;
@@ -187,21 +348,72 @@
             color: #888;
             font-size: 0.9em;
         }
-        
+
         @media (max-width: 768px) {
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
         }
+
+        /* Technologies Section */
+        .tech-container {
+            margin-top: 20px;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tech-category h4 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            background: #f5f5f5;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: #333;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .tech-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">Akil Thangavel</a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
+                <li><a href="#technologies">Technologies</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#blog">Blog</a></li>
@@ -209,7 +421,7 @@
             </ul>
         </div>
     </nav>
-    
+
     <div class="container">
         <header>
             <h1>Akil Thangavel</h1>
@@ -218,52 +430,216 @@
 
         <section id="about">
             <h2>About</h2>
-            <p>I'm a passionate software developer with expertise in Python-based frameworks including Django, Flask, FastAPI, and data science libraries. I have experience in developing web applications, RESTful APIs, and data-driven solutions using Python ecosystem. I work with cross-functional teams to design scalable applications and also conduct seminars and workshops across colleges, sharing knowledge about Python development and modern web technologies.</p>
+            <p>I'm a passionate software developer with expertise in Python-based frameworks including Django, Flask,
+                FastAPI, and data science libraries. I have experience in developing web applications, RESTful APIs, and
+                data-driven solutions using Python ecosystem. I work with cross-functional teams to design scalable
+                applications and also conduct seminars and workshops across colleges, sharing knowledge about Python
+                development and modern web technologies.</p>
         </section>
 
-        <section id="education">
-            <h2>Education</h2>
-            
-            <div class="project">
-                <h3>Bachelor of Computer Applications (BCA)</h3>
-                <p>Vidhyasagar College of Arts and Science, Udumalapet | 2020 - 2023</p>
-                <p>Percentage: 78% - Focused on computer applications, programming fundamentals, and software development</p>
+        <section id="technologies">
+            <h2>Technologies</h2>
+
+            <div class="akil-tech-container">
+                <div class="akil-tech-track">
+
+                    <!-- Duplicate group A and B to make seamless wrap when sliding left→right -->
+                    <ul class="akil-tech-row" aria-hidden="true">
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/html5/ff6d00" alt="HTML5" /></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/css3/2965f1" alt="CSS3" /></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/javascript/f7df1e" alt="JavaScript" /></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/typescript/3178c6" alt="TypeScript" /><span
+                                class="akil-tech-tooltip">TypeScript</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/react/61dafb" alt="React" /><span
+                                class="akil-tech-tooltip">React</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/nextdotjs/ffffff" alt="Next.js" /><span
+                                class="akil-tech-tooltip">Next.js</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/nodedotjs/5fa04e" alt="Node.js" /><span
+                                class="akil-tech-tooltip">Node.js</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/express/ffffff" alt="Express" /><span
+                                class="akil-tech-tooltip">Express</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB" /><span
+                                class="akil-tech-tooltip">MongoDB</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/postgresql/4169e1" alt="PostgreSQL" /><span
+                                class="akil-tech-tooltip">PostgreSQL</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/prisma/2D3748" alt="Prisma" /><span
+                                class="akil-tech-tooltip">Prisma</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/graphql/e10098" alt="GraphQL" /><span
+                                class="akil-tech-tooltip">GraphQL</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/openapiinitiative/6BA539" alt="OpenAPI" /><span
+                                class="akil-tech-tooltip">REST APIs</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/tailwindcss/38bdf8" alt="Tailwind CSS" /><span
+                                class="akil-tech-tooltip">Tailwind CSS</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/styledcomponents/DB7093"
+                                alt="Styled Components" /><span class="akil-tech-tooltip">Styled Components</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/sass/cc6699" alt="Sass" /><span
+                                class="akil-tech-tooltip">Sass</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/vite/646CFF" alt="Vite" /><span
+                                class="akil-tech-tooltip">Vite</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/webpack/8DD6F9" alt="Webpack" /><span
+                                class="akil-tech-tooltip">Webpack</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/jest/C21325" alt="Jest" /><span
+                                class="akil-tech-tooltip">Jest</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/playwright/45ba4b" alt="Playwright" /><span
+                                class="akil-tech-tooltip">Playwright</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/docker/2496ed" alt="Docker" /><span
+                                class="akil-tech-tooltip">Docker</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/git/f05032" alt="Git" /><span
+                                class="akil-tech-tooltip">Git</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/githubactions/2088FF" alt="GitHub Actions" /><span
+                                class="akil-tech-tooltip">CI/CD</span></li>
+                    </ul>
+
+                    <ul class="akil-tech-row" aria-hidden="true">
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/html5/ff6d00" alt="HTML5" /></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/css3/2965f1" alt="CSS3" /></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/javascript/f7df1e" alt="JavaScript" /></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/typescript/3178c6" alt="TypeScript" /><span
+                                class="akil-tech-tooltip">TypeScript</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/react/61dafb" alt="React" /><span
+                                class="akil-tech-tooltip">React</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/nextdotjs/ffffff" alt="Next.js" /><span
+                                class="akil-tech-tooltip">Next.js</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/nodedotjs/5fa04e" alt="Node.js" /><span
+                                class="akil-tech-tooltip">Node.js</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/express/ffffff" alt="Express" /><span
+                                class="akil-tech-tooltip">Express</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/mongodb/47A248" alt="MongoDB" /><span
+                                class="akil-tech-tooltip">MongoDB</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/postgresql/4169e1" alt="PostgreSQL" /><span
+                                class="akil-tech-tooltip">PostgreSQL</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/prisma/2D3748" alt="Prisma" /><span
+                                class="akil-tech-tooltip">Prisma</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/graphql/e10098" alt="GraphQL" /><span
+                                class="akil-tech-tooltip">GraphQL</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/openapiinitiative/6BA539" alt="OpenAPI" /><span
+                                class="akil-tech-tooltip">REST APIs</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/tailwindcss/38bdf8" alt="Tailwind CSS" /><span
+                                class="akil-tech-tooltip">Tailwind CSS</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/styledcomponents/DB7093"
+                                alt="Styled Components" /><span class="akil-tech-tooltip">Styled Components</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/sass/cc6699" alt="Sass" /><span
+                                class="akil-tech-tooltip">Sass</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/vite/646CFF" alt="Vite" /><span
+                                class="akil-tech-tooltip">Vite</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/webpack/8DD6F9" alt="Webpack" /><span
+                                class="akil-tech-tooltip">Webpack</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/jest/C21325" alt="Jest" /><span
+                                class="akil-tech-tooltip">Jest</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/playwright/45ba4b" alt="Playwright" /><span
+                                class="akil-tech-tooltip">Playwright</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/docker/2496ed" alt="Docker" /><span
+                                class="akil-tech-tooltip">Docker</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/git/f05032" alt="Git" /><span
+                                class="akil-tech-tooltip">Git</span></li>
+                        <li class="akil-tech-pill"><img class="akil-tech-icon"
+                                src="https://cdn.simpleicons.org/githubactions/2088FF" alt="GitHub Actions" /><span
+                                class="akil-tech-tooltip">CI/CD</span></li>
+                    </ul>
+                </div>
             </div>
-            
+
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+
             <div class="project">
-                <h3>12th Grade</h3>
-                <p>BVB Matriculation Higher Secondary School, Palani | 2018 - 2020</p>
-                <p>Percentage: 88% - Completed higher secondary education with focus on science and mathematics</p>
+                <h3>Thinkorswim Algo Trading Bot</h3>
+                <p>Technologies: Java, Spring Boot, JavaScript, HTML/CSS, Redis, RabbitMQ</p>
+                <p>Developed a Java-based Thinkorswim trading bot with Spring Boot, integrating TradingView webhooks and
+                    using Redis and RabbitMQ for asynchronous task handling to automate strategies and enhance trading
+                    efficiency.</p>
+                <a href="#" target="_blank">View Project</a>
             </div>
-            
+
             <div class="project">
-                <h3>10th Grade</h3>
-                <p>Hillock International School - CBSE, Dindigul (Sirumalai) | 2016 - 2018</p>
-                <p>Percentage: 78% - Completed secondary education with strong foundation in core subjects</p>
+                <h3>SantiagoCycleSim: Interactive Modeling and Visualization</h3>
+                <p>Technologies: Java, Spring Boot, PostgreSQL, HTML, CSS, JavaScript, Plotly.js, AWS</p>
+                <p>SantiagoCycleSim is a Java-based simulation tool using Spring Boot, modeling bicycle trips in
+                    Santiago. It processes spatial/tabular data from CSV and SHP files via geospatial libraries,
+                    transitioning to a responsive web platform with interactive route visualization and real-time heat
+                    maps.</p>
+                <a href="#" target="_blank">View Project</a>
+            </div>
+
+            <div class="project">
+                <h3>Enterprise Application Development</h3>
+                <p>Technologies: Java, ERP Systems, Cross-functional Collaboration</p>
+                <p>Actively involved in developing and customizing enterprise applications using Java and related
+                    technologies. Responsibilities included upgrading and enhancing ERP systems, ensuring compatibility
+                    with evolving business requirements, and providing technical support and training to end-users.</p>
+                <a href="#" target="_blank">View Project</a>
             </div>
         </section>
 
         <section id="awards">
             <h2>Awards & Certificates</h2>
-            
+
             <div class="project">
                 <h3>Best Web Design Award</h3>
                 <p>Tech Conference 2024 | First Place</p>
-                <p>Recognized for innovative user interface design and exceptional user experience in web development</p>
+                <p>Recognized for innovative user interface design and exceptional user experience in web development
+                </p>
             </div>
-            
+
             <div class="project">
                 <h3>Google Analytics Certified</h3>
                 <p>Google | 2023</p>
                 <p>Certified in Google Analytics for measuring and analyzing website performance and user behavior</p>
             </div>
-            
+
             <div class="project">
                 <h3>Outstanding Student Achievement</h3>
                 <p>University Name | 2023</p>
                 <p>Awarded for academic excellence and leadership in computer science program</p>
             </div>
-            
+
             <div class="project">
                 <h3>AWS Cloud Practitioner</h3>
                 <p>Amazon Web Services | 2022</p>
@@ -273,84 +649,69 @@
 
         <section id="seminars">
             <h2>Seminars & Classes</h2>
-            
+
             <div class="project">
                 <h3>Securing and Monitoring EC2 and Route 53</h3>
                 <p>Conducted across 20+ colleges in Coimbatore and Erode</p>
-                <p>Comprehensive seminar on AWS security best practices, EC2 instance management, and Route 53 DNS configuration for scalable web applications</p>
+                <p>Comprehensive seminar on AWS security best practices, EC2 instance management, and Route 53 DNS
+                    configuration for scalable web applications</p>
             </div>
-            
+
             <div class="project">
                 <h3>Enhancing Spring Boot Applications with RabbitMQ</h3>
                 <p>Interactive Workshop Series | 2023-2024</p>
-                <p>Hands-on workshop covering asynchronous task processing, message queuing, and microservices architecture using Spring Boot and RabbitMQ</p>
+                <p>Hands-on workshop covering asynchronous task processing, message queuing, and microservices
+                    architecture using Spring Boot and RabbitMQ</p>
             </div>
-            
+
             <div class="project">
                 <h3>Developing Cross-Platform Desktop Applications with Swing</h3>
                 <p>Technical Training Session | 2023</p>
-                <p>Practical session on Java Swing development, GUI design principles, and creating cross-platform desktop applications</p>
+                <p>Practical session on Java Swing development, GUI design principles, and creating cross-platform
+                    desktop applications</p>
             </div>
-            
+
             <div class="project">
                 <h3>Building Web Applications with Quarkus</h3>
                 <p>Advanced Development Workshop | 2023</p>
-                <p>From basics to advanced concepts in Quarkus framework, including cloud-native development and performance optimization</p>
+                <p>From basics to advanced concepts in Quarkus framework, including cloud-native development and
+                    performance optimization</p>
             </div>
-            
+
             <div class="project">
                 <h3>Software Development Best Practices</h3>
                 <p>Industry Knowledge Sharing | 2022-2024</p>
-                <p>Comprehensive seminars featuring interactive learning, live demonstrations, and tailored Q&A segments on software development methodologies and industry standards</p>
+                <p>Comprehensive seminars featuring interactive learning, live demonstrations, and tailored Q&A segments
+                    on software development methodologies and industry standards</p>
             </div>
         </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            
-            <div class="project">
-                <h3>Thinkorswim Algo Trading Bot</h3>
-                <p>Technologies: Java, Spring Boot, JavaScript, HTML/CSS, Redis, RabbitMQ</p>
-                <p>Developed a Java-based Thinkorswim trading bot with Spring Boot, integrating TradingView webhooks and using Redis and RabbitMQ for asynchronous task handling to automate strategies and enhance trading efficiency.</p>
-                <a href="#" target="_blank">View Project</a>
-            </div>
-            
-            <div class="project">
-                <h3>SantiagoCycleSim: Interactive Modeling and Visualization</h3>
-                <p>Technologies: Java, Spring Boot, PostgreSQL, HTML, CSS, JavaScript, Plotly.js, AWS</p>
-                <p>SantiagoCycleSim is a Java-based simulation tool using Spring Boot, modeling bicycle trips in Santiago. It processes spatial/tabular data from CSV and SHP files via geospatial libraries, transitioning to a responsive web platform with interactive route visualization and real-time heat maps.</p>
-                <a href="#" target="_blank">View Project</a>
-            </div>
-            
-            <div class="project">
-                <h3>Enterprise Application Development</h3>
-                <p>Technologies: Java, ERP Systems, Cross-functional Collaboration</p>
-                <p>Actively involved in developing and customizing enterprise applications using Java and related technologies. Responsibilities included upgrading and enhancing ERP systems, ensuring compatibility with evolving business requirements, and providing technical support and training to end-users.</p>
-                <a href="#" target="_blank">View Project</a>
-            </div>
-        </section>
+
 
         <section id="blog">
             <h2>Blog</h2>
-            
+
             <div class="project">
                 <h3>Blog Post Title One</h3>
                 <p>Date: January 15, 2024</p>
-                <p>A brief excerpt from your blog post. This could be about your latest project, thoughts on web development, or any topic you're passionate about.</p>
+                <p>A brief excerpt from your blog post. This could be about your latest project, thoughts on web
+                    development, or any topic you're passionate about.</p>
                 <a href="#" target="_blank">Read More</a>
             </div>
-            
+
             <div class="project">
                 <h3>Blog Post Title Two</h3>
                 <p>Date: January 10, 2024</p>
-                <p>Another blog post excerpt. Share your insights, tutorials, or experiences in web development and design.</p>
+                <p>Another blog post excerpt. Share your insights, tutorials, or experiences in web development and
+                    design.</p>
                 <a href="#" target="_blank">Read More</a>
             </div>
-            
+
             <div class="project">
                 <h3>Blog Post Title Three</h3>
                 <p>Date: January 5, 2024</p>
-                <p>Your third blog post. Keep your readers engaged with valuable content about your field of expertise.</p>
+                <p>Your third blog post. Keep your readers engaged with valuable content about your field of expertise.
+                </p>
                 <a href="#" target="_blank">Read More</a>
             </div>
         </section>
@@ -371,18 +732,20 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>About Me</h4>
-                <p>Passionate software developer specializing in Python-based frameworks and modern web technologies. Creating innovative solutions and sharing knowledge through workshops and seminars.</p>
+                <p>Passionate software developer specializing in Python-based frameworks and modern web technologies.
+                    Creating innovative solutions and sharing knowledge through workshops and seminars.</p>
             </div>
-            
+
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <a href="#about">About</a>
+                <a href="#technologies">Technologies</a>
                 <a href="#education">Education</a>
                 <a href="#projects">Projects</a>
                 <a href="#blog">Blog</a>
                 <a href="#contact">Contact</a>
             </div>
-            
+
             <div class="footer-section">
                 <h4>Skills</h4>
                 <p>Python & Django</p>
@@ -391,7 +754,7 @@
                 <p>Web Development</p>
                 <p>API Development</p>
             </div>
-            
+
             <div class="footer-section">
                 <h4>Contact</h4>
                 <p>📧 akilthangavel@gmail.com</p>
@@ -400,10 +763,11 @@
                 <p>📍 Palani, Dindigul</p>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>&copy; 2024 Akil Thangavel. All rights reserved. | Built with HTML & CSS</p>
         </div>
     </footer>
 </body>
+
 </html>
