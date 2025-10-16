@@ -1,308 +1,491 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>About Me — Hacker Theme</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#020403;
-    --matrix:#00ff66;
-    --muted:#6bffb1;
-    --card-bg: rgba(0,0,0,0.55);
-    --glass: rgba(0,0,0,0.35);
-    --accent: #00e676;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Creative Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  /* Page */
-  html,body{height:100%;margin:0;background:var(--bg);font-family:'JetBrains Mono', monospace;color:var(--matrix);-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
-  .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;position:relative;overflow:hidden;}
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
 
-  /* matrix canvas (full-screen falling chars) */
-  canvas#matrix {
-    position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block;filter:contrast(1.1) saturate(1.1);
-    opacity:0.18;
-  }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 0.9fr 0.9fr 1.2fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 30px;
+            padding: 20px;
+        }
 
-  /* subtle scanlines */
-  .scanlines{
-    pointer-events:none;position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.03) 50%, rgba(0,0,0,0));background-size:100% 4px;z-index:1;opacity:0.45;
-  }
+        .card {
+            background: white;
+            border-radius: 30px;
+            padding: 20px 35px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 230px;
+        }
 
-  /* container */
-  .about-shell{position:relative;z-index:3;display:grid;grid-template-columns:1fr 420px;gap:32px;width:min(1150px,95%);align-items:start;}
-  @media (max-width:920px){.about-shell{grid-template-columns:1fr;}}
-  
-  /* left: terminal card */
-  .terminal {
-    background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.45));
-    border:1px solid rgba(0,255,118,0.08);
-    border-radius:12px;padding:26px;backdrop-filter: blur(6px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.7), inset 0 0 40px rgba(0,255,118,0.02);
-    position:relative;overflow:hidden;
-  }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+        }
 
-  /* top bar lights */
-  .terminal .topbar{display:flex;gap:8px;align-items:center;margin-bottom:12px}
-  .dot{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,0.35);box-shadow:0 0 8px rgba(0,0,0,0.6) inset}
-  .dot.r{background:#ff5252}
-  .dot.y{background:#ffb74d}
-  .dot.g{background:#69f0ae}
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+            pointer-events: none;
+        }
 
-  /* title */
-  .terminal h1{font-size:18px;margin:6px 0 14px;color:var(--muted);letter-spacing:0.6px}
-  .subtitle{font-size:12px;color:rgba(180,255,200,0.45);margin-bottom:18px}
+        /* Hero Card */
+        .hero-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            grid-row: span 2;
+            grid-column: 1;
+            position: relative;
+        }
 
-  /* typed area */
-  .typed {
-    background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.06));
-    border-radius:8px;padding:18px;font-size:14px;line-height:1.6;color:var(--matrix);
-    min-height:170px;position:relative;overflow:auto;border:1px solid rgba(0,255,118,0.03);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.45), inset 0 0 40px rgba(0,255,118,0.02);
-  }
+        .slides-container {
+            width: 100%;
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
 
-  .typed .line{white-space:pre-wrap;word-break:break-word}
-  .cursor{display:inline-block;width:10px;height:18px;background:var(--matrix);margin-left:6px;vertical-align:middle;animation:blink 900ms steps(2) infinite}
-  @keyframes blink{50%{opacity:0}}
+        .slide {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
 
-  /* flicker / glitch accent */
-  .glitch {
-    position:absolute;inset:auto 18px 18px 18px;height:6px;background:linear-gradient(90deg, rgba(0,230,118,0.06), rgba(255,255,255,0.02));
-    filter:blur(6px);opacity:0.9;mix-blend-mode:screen;pointer-events:none;
-  }
+        .slide.active {
+            display: flex;
+            position: relative;
+            opacity: 1;
+        }
 
-  /* right panel: services / stats */
-  .right {
-    display:flex;flex-direction:column;gap:18px;
-  }
 
-  .profile-card{
-    background:linear-gradient(180deg, rgba(0,0,0,0.48), rgba(0,0,0,0.62));
-    border-radius:12px;padding:18px;border:1px solid rgba(0,255,118,0.06);box-shadow:0 18px 40px rgba(0,0,0,0.6);
-  }
+        .hero-card h1 {
+            font-size: 1.8em;
+            color: #000;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
 
-  .profile-title{font-size:13px;color:var(--muted);margin-bottom:10px}
-  .profile-name{font-size:20px;color:#eafff0;margin-bottom:6px}
-  .profile-desc{font-size:13px;color:rgba(180,255,200,0.6);line-height:1.5}
+        .hero-card .name-highlight {
+            color: #000;
+            background: #000;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: #000;
+            background-clip: text;
+            font-weight: bold;
+        }
 
-  /* stats row */
-  .stats-row{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
-  .stat-block{
-    background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.4));
-    border-radius:10px;padding:12px 14px;min-width:110px;border:1px solid rgba(0,255,118,0.03);
-    box-shadow:0 10px 24px rgba(0,0,0,0.55);
-  }
-  .stat-block .num{font-size:18px;color:var(--accent);font-weight:600}
-  .stat-block .lbl{font-size:11px;color:rgba(180,255,200,0.55);margin-top:4px}
+        .hero-card .title {
+            font-size: 1.6em;
+            color: #000;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-  /* services area with neon tiles */
-  .services{
-    display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;
-  }
-  .tile{
-    background:linear-gradient(180deg, rgba(0,0,0,0.38), rgba(0,0,0,0.55));
-    border-radius:8px;padding:12px;border:1px solid rgba(0,255,118,0.04);backdrop-filter:blur(4px);
-    min-height:72px;display:flex;flex-direction:column;justify-content:center;transition:transform 250ms ease, box-shadow 250ms ease;
-    position:relative;overflow:hidden;
-  }
-  .tile:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,255,118,0.06)}
-  .tile .ticon{font-size:18px;color:var(--accent);margin-bottom:6px}
-  .tile .tt{font-size:13px;color:#eafff0;margin-bottom:6px}
-  .tile .td{font-size:12px;color:rgba(180,255,200,0.55)}
+        .hero-card .description {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            max-width: 400px;
+        }
 
-  /* tiny scanline overlay on tiles */
-  .tile::after{content:"";position:absolute;inset:0;background-image:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));opacity:0.03;pointer-events:none}
+        .hero-card .tagline {
+            font-size: 1.05em;
+            color: #666;
+            font-style: italic;
+            margin-top: auto;
+        }
 
-  /* subtle outer glow */
-  .glow {
-    position:absolute;inset:-40px;pointer-events:none;background:radial-gradient(closest-side, rgba(0,255,118,0.03), transparent 40%);z-index:2;
-  }
+        .navigation-dots {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            padding-top: 15px;
+            z-index: 10;
+        }
 
-  /* small footer / commands */
-  .cmdline{margin-top:14px;font-size:12px;color:rgba(180,255,200,0.45)}
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-  /* accessibility - reduce motion */
-  @media (prefers-reduced-motion: reduce){
-    canvas#matrix, .shape, .typed .cursor {animation:none;transition:none}
-  }
+        .dot.active {
+            background: #000;
+            transform: scale(1.2);
+        }
 
-  /* mobile */
-  @media (max-width:920px){
-    .about-shell{width:100%}
-    .terminal{order:2}
-    .right{order:1}
-    .services{grid-template-columns:1fr}
-    .typed{min-height:120px}
-  }
+        .dot:hover {
+            background: #666;
+        }
 
-</style>
+        /* Phone Card */
+        .phone-card {
+            background: white;
+            grid-row: span 2;
+            grid-column: 2;
+        }
+
+        .phone-card h2 {
+            font-size: 1.8em;
+            color: #000;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .phone-card .description {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .phone-card .additional-text {
+            font-size: 1.05em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+
+        /* Info Cards */
+        .info-card {
+            grid-column: 3;
+        }
+
+        .info-card h3 {
+            font-size: 1.6em;
+            color: #000;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            line-height: 1.3;
+        }
+
+        .info-card .highlight {
+            color: #000;
+            display: block;
+        }
+
+        .info-card p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.5;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+
+            .hero-card {
+                grid-column: 1;
+                grid-row: 1 / 3;
+            }
+
+            .phone-card {
+                grid-column: 2;
+                grid-row: 1 / 3;
+            }
+
+            .info-card {
+                grid-column: 1 / 3;
+                grid-row: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 20px;
+            }
+
+            .card {
+                padding: 25px 20px;
+                min-height: 220px;
+            }
+
+            .hero-card,
+            .phone-card,
+            .info-card {
+                grid-column: 1;
+                grid-row: auto;
+            }
+
+            .hero-card h1 {
+                font-size: 1.5em;
+            }
+
+            .hero-card .title {
+                font-size: 1.3em;
+            }
+
+            .phone-card h2 {
+                font-size: 1.5em;
+            }
+
+            .info-card h3 {
+                font-size: 1.3em;
+            }
+        }
+
+        /* Easter Egg Styles */
+        .easter-egg-card {
+            position: relative;
+        }
+
+        .brand-badge {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: #000;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+
+        .info-card .additional-text {
+            font-size: 1.05em;
+            color: #666;
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
-<div class="wrap">
-  <canvas id="matrix"></canvas>
-  <div class="scanlines"></div>
-  <div class="glow"></div>
+    <div class="container">
+        <!-- Hero Card -->
+        <div class="card hero-card">
+            <div class="slides-container">
+                <!-- Slide 1 -->
+                <div class="slide active">
+                    <div>
+                        <h1>HELLO, I AM <span class="name-highlight">SANIMANI</span></h1>
+                        <div class="title">A UX PROFESSIONAL</div>
+                        <p class="description">
+                            who designs for clarity, adoption, and impact, from global platforms to award-winning products. Passionate about creating meaningful experiences that bridge the gap between users and technology.
+                        </p>
+                        <p class="tagline">What does bold UX look like?</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <div>
+                        <h1>CREATIVE <span class="name-highlight">DESIGNER</span></h1>
+                        <div class="title">INNOVATION EXPERT</div>
+                        <p class="description">
+                            Crafting experiences that connect users with technology through thoughtful design and intuitive interfaces. Every pixel tells a story, every interaction matters.
+                        </p>
+                        <p class="tagline">Design is thinking made visual</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <div>
+                        <h1>PROBLEM <span class="name-highlight">SOLVER</span></h1>
+                        <div class="title">STRATEGIC THINKER</div>
+                        <p class="description">
+                            Turning complex challenges into elegant solutions with user-centered design methodologies. Simplifying complexity through research, empathy, and innovation.
+                        </p>
+                        <p class="tagline">Simplicity is the ultimate sophistication</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="slide">
+                    <div>
+                        <h1>DIGITAL <span class="name-highlight">INNOVATOR</span></h1>
+                        <div class="title">TECH ENTHUSIAST</div>
+                        <p class="description">
+                            Building the future with cutting-edge design patterns and modern development practices. Embracing new technologies to push the boundaries of what's possible.
+                        </p>
+                        <p class="tagline">Innovation distinguishes leaders from followers</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 5 -->
+                <div class="slide">
+                    <div>
+                        <h1>AWARD-WINNING <span class="name-highlight">CREATOR</span></h1>
+                        <div class="title">EXCELLENCE DRIVEN</div>
+                        <p class="description">
+                            Recognized for outstanding contributions to design excellence and user experience innovation. Committed to delivering work that sets new standards in the industry.
+                        </p>
+                        <p class="tagline">Excellence is not a destination, it's a journey</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation-dots">
+                <div class="dot active" data-slide="0"></div>
+                <div class="dot" data-slide="1"></div>
+                <div class="dot" data-slide="2"></div>
+                <div class="dot" data-slide="3"></div>
+                <div class="dot" data-slide="4"></div>
+            </div>
+        </div>
 
-  <div class="about-shell" role="region" aria-label="About me - hacker theme">
+        <!-- Phone Card -->
+        <div class="card phone-card">
+            <h2>SNAP, TAP...<br>AND A SECRET TAG.</h2>
+            <p class="description">
+                Experience seamless interaction through intuitive gestures and smart tagging. Every tap opens a new dimension of connectivity and engagement.
+            </p>
+            <p class="additional-text">
+                Modern interfaces require modern thinking. We blend physical interactions with digital intelligence to create memorable user experiences.
+            </p>
+        </div>
 
-    <!-- LEFT: Terminal-style about / typing -->
-    <div class="terminal" aria-hidden="false">
-      <div class="topbar">
-        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-      </div>
+        <!-- Magic Card -->
+        <div class="card info-card">
+            <h3>MAGIC STARTS HERE.<br><span class="highlight">BUT WHO WAVED?</span></h3>
+            <p class="description">
+                Behind every great design is a creator who dared to imagine differently. The magic happens when creativity meets purpose.
+            </p>
+            <div class="brand-badge">Adobe Photoshop Elements</div>
+            <p class="additional-text">
+                Tools enable possibilities, but vision drives transformation.
+            </p>
+        </div>
 
-      <h1>&gt; about_me.exe</h1>
-      <div class="subtitle">Full‑Stack Developer · System‑minded · Open‑Source Enthusiast</div>
-
-      <div class="typed" id="typed" aria-live="polite" aria-atomic="true">
-        <!-- typed lines will appear here -->
-      </div>
-
-      <div class="glitch" aria-hidden="true"></div>
-
-      <div class="cmdline">
-        <span style="color:rgba(0,255,118,0.65)">&gt;</span> <span id="prompt">_</span>
-      </div>
+        <!-- Easter Egg Card -->
+        <div class="card info-card easter-egg-card">
+            <h3>SAVE INK<br><span class="highlight">SPOT THE<br>EASTER EGG.</span></h3>
+            <p class="description">
+                Great design is in the details. Look closely and you'll find thoughtful touches hidden in plain sight.
+            </p>
+            <p class="additional-text">
+                Sustainability meets creativity. Every choice matters, from ink to interaction. The best designs are those that surprise and delight while respecting resources.
+            </p>
+        </div>
     </div>
 
-    <!-- RIGHT: Profile card, stats, services -->
-    <aside class="right" aria-label="Profile and services">
+    <script>
+        // Slide navigation functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Remove active class from all dots
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Show the selected slide
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+        
+        // Navigation dots functionality
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Auto-advance slides (optional - uncomment to enable)
+        // setInterval(() => {
+        //     currentSlide = (currentSlide + 1) % slides.length;
+        //     showSlide(currentSlide);
+        // }, 5000);
 
-      <div class="profile-card" role="region" aria-label="Profile">
-        <div class="profile-title">IDENTITY</div>
-        <div class="profile-name">Akil Thangavel</div>
-        <div class="profile-desc">I'm a passionate full‑stack developer with a hacker mindset — I enjoy systems, automation, and clean code that just works. I build user-facing apps and robust backends, and I love contributing to open-source.</div>
+        // Add subtle parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                const speed = (index + 1) * 0.05;
+                const yPos = window.pageYOffset * speed;
+                card.style.transform = `translateY(${yPos}px)`;
+            });
+        });
 
-        <div class="stats-row">
-          <div class="stat-block">
-            <div class="num">50+</div>
-            <div class="lbl">Projects</div>
-          </div>
-          <div class="stat-block">
-            <div class="num">3+</div>
-            <div class="lbl">Years Exp</div>
-          </div>
-          <div class="stat-block">
-            <div class="num">100%</div>
-            <div class="lbl">Client Sat.</div>
-          </div>
-        </div>
-
-        <div class="services" aria-label="Services">
-          <div class="tile" title="Frontend">
-            <div class="ticon">▣</div>
-            <div class="tt">Frontend Development</div>
-            <div class="td">Modern UIs with React / Vue / Tailwind.</div>
-          </div>
-          <div class="tile" title="Backend">
-            <div class="ticon">☍</div>
-            <div class="tt">Backend Development</div>
-            <div class="td">APIs, microservices, and databases.</div>
-          </div>
-          <div class="tile" title="Mobile">
-            <div class="ticon">◩</div>
-            <div class="tt">Mobile Development</div>
-            <div class="td">Cross-platform apps with crisp UX.</div>
-          </div>
-          <div class="tile" title="Automation / Tools">
-            <div class="ticon">⌘</div>
-            <div class="tt">Automation</div>
-            <div class="td">CI/CD, bots, deploy & infra scripting.</div>
-          </div>
-        </div>
-      </div>
-
-    </aside>
-  </div>
-</div>
-
-<script>
-/* MATRIX BACKGROUND */
-(function matrix(){
-  const canvas = document.getElementById('matrix');
-  const ctx = canvas.getContext('2d');
-  let w = canvas.width = innerWidth;
-  let h = canvas.height = innerHeight;
-  const cols = Math.floor(w / 20);
-  const ypos = Array(cols).fill(0);
-
-  function matrixLoop(){
-    ctx.fillStyle = 'rgba(0,0,0,0.06)';
-    ctx.fillRect(0,0,w,h);
-    ctx.fillStyle = 'rgba(0,255,120,0.08)';
-    ctx.font = '15px JetBrains Mono, monospace';
-    for (let i = 0; i < ypos.length; i++) {
-      const text = String.fromCharCode(33 + Math.random()*94 | 0);
-      const x = i * 20;
-      ctx.fillText(text, x, ypos[i] * 20);
-      if (ypos[i] * 20 > h && Math.random() > 0.975) ypos[i] = 0;
-      ypos[i]++;
-    }
-  }
-
-  let raf;
-  function run(){
-    matrixLoop();
-    raf = requestAnimationFrame(run);
-  }
-  run();
-
-  addEventListener('resize', () => {
-    cancelAnimationFrame(raf);
-    w = canvas.width = innerWidth;
-    h = canvas.height = innerHeight;
-  });
-})();
-
-/* TYPING EFFECT — terminal style */
-(function typing(){
-  const lines = [
-    "> echo \"Hello — I'm Akil. I build full-stack apps, APIs and automation.\"",
-    "> skills: frontend, backend, mobile, infra, automation",
-    "> philosophy: clean code, secure defaults, pragmatic solutions",
-    "> hobbies: open-source, exploring new tech, strong coffee ☕",
-    "> status: always learning — currently exploring performant systems"
-  ];
-  const target = document.getElementById('typed');
-  const prompt = document.getElementById('prompt');
-  let li = 0, ci = 0, delay = 30;
-
-  function typeChar(){
-    if(li >= lines.length) {
-      // finished: show subtle loop: clear then retype
-      setTimeout(()=>{ target.innerHTML = ''; li = 0; ci=0; setTimeout(typeChar, 600); }, 2500);
-      return;
-    }
-    const text = lines[li];
-    if(ci <= text.length){
-      // add char
-      const safe = text.slice(0,ci).replace(/</g,'&lt;').replace(/>/g,'&gt;');
-      target.innerHTML = '<div class="line">'+safe+'</div>';
-      ci++;
-      // variable speed for realism
-      setTimeout(typeChar, delay + Math.random()*40);
-      // update prompt
-      prompt.textContent = (ci % 2 === 0) ? '_' : ' ';
-    } else {
-      // hold then next line
-      li++; ci = 0;
-      setTimeout(typeChar, 700);
-    }
-  }
-
-  // start after small delay
-  setTimeout(typeChar, 600);
-
-})();
-
-/* small accessibility: pause animations on focus */
-window.addEventListener('keydown', e => {
-  if(e.key === 'Escape'){
-    // reduce matrix opacity if Esc pressed (quick "hide")
-    document.getElementById('matrix').style.opacity = '0.05';
-  }
-});
-</script>
+        // Hover effect for cards
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
+            });
+        });
+        
+        // Keyboard navigation for slides
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            } else if (e.key === 'ArrowRight') {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+        });
+    </script>
 </body>
 </html>
+
