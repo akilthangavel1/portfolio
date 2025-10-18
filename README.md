@@ -5,121 +5,15 @@ This portfolio website is designed to showcase professional expertise in AI deve
 
 ## Website Structure
 
-### 1. Hero / Introduction Section
-**Purpose**: First impression that clearly states your role, value proposition, and call-to-action.
-
-**Key Elements**:
-- Professional headline with your name and primary expertise
-- Multiple rotating slides showcasing different technical specializations:
-  - AI Development
-  - N8N Automation
-  - LangChain Applications
-  - RAG & LLMs
-  - Voice Agents
-- Clear value proposition
-- Interactive navigation dots for slide control
-- Immediate engagement through dynamic content
-
-**Current Implementation**: 
-- Sliding hero card with 5 different technology focuses
-- Clean, professional design with highlight text
-- Comprehensive descriptions of each expertise area
-
+### 1. Hero / Introduction Sectio
 ### 2. About Me / About Us
-**Purpose**: Provides context, background, experience, and personal story to build connection.
-
-**Key Elements**:
-- Personal introduction and background
-- Journey in technology and development
-- Core values and mission
-- What drives your passion for technology
-- Years of experience and key accomplishments
-
-**Current Implementation**:
-- Dedicated "About Me" card with personal narrative
-- Focus on passion for technology and innovation
-- Emphasis on creating meaningful digital experiences
-
-### 3. Technologies / Skills
-**Purpose**: Demonstrates technical expertise early so clients understand your capabilities.
-
-**Key Elements**:
-- Core programming languages and frameworks
-- AI/ML technologies and tools
-- Blockchain development stack
-- Automation and workflow tools
-- Database and cloud technologies
-- Development methodologies
-
-**Current Implementation**:
-- Integrated within hero slides showing specialized technologies
-- Blockchain Development card highlighting smart contracts and decentralized architectures
-- N8N automation expertise
-- AI and machine learning focus areas
-
+###### 3. Technologies / Skills
 ### 4. Projects / Portfolio
-**Purpose**: Demonstrates practical work experience and showcases real-world applications.
-
-**Key Elements**:
-- Featured projects with descriptions
-- Technologies used in each project
-- Problem solved and impact achieved
-- Live demos or GitHub links
-- Screenshots or visual representations
-- Client testimonials for specific projects
-
-**Status**: *To be implemented*
-
 ### 5. Certifications / Achievements
-**Purpose**: Validates skills and adds credibility to your expertise.
-
-**Key Elements**:
-- Professional certifications
-- Awards and recognitions
-- Educational background
-- Notable achievements
-- Industry recognitions
-- Speaking engagements or publications
-
-**Status**: *To be implemented*
-
-### 6. Testimonials / Client Feedback
-**Purpose**: Builds trust and provides social proof of your work quality.
-
-**Key Elements**:
-- Client testimonials with names and companies
-- Project-specific feedback
-- Ratings or review summaries
-- Case study highlights
-- Long-term client relationships
-
-**Status**: *To be implemented*
-
-### 7. Blog / Insights
-**Purpose**: Optional section that demonstrates thought leadership and knowledge sharing.
-
-**Key Elements**:
-- Technical articles and tutorials
-- Industry insights and trends
-- Project deep-dives
-- Technology comparisons
-- Best practices and lessons learned
-
-**Status**: *Optional for future implementation*
-
-### 8. Contact / Hire Me
-**Purpose**: Ends with clear call-to-action for potential clients to reach out.
-
-**Key Elements**:
-- Multiple contact methods (email, phone, social media)
-- Contact form for project inquiries
-- Availability status
-- Preferred communication methods
-- Response time expectations
-- Call-to-action buttons
-
-**Status**: *To be implemented*
-
+### 6. Seminars / Events
+### 7. Testimonials / Client Feedback
+### 8. Blog / Insights
+### 9. Contact / Hire Me
 ## Current Features
 
 ### Implemented Sections:

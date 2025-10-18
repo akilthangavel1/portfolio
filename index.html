@@ -11,6 +11,24 @@
             --akil-tech-text: #1a1a1a;
             --akil-tech-pill-bg: rgba(0, 0, 0, 0.03);
             --akil-tech-pill-brd: rgba(0, 0, 0, 0.08);
+
+
+            --akil-seminars-clr-bg: #ffffff;
+            --akil-seminars-clr-text: #000;
+            --akil-seminars-clr-primary: #000;
+            --akil-seminars-hover-intensity: 10rem;
+            --akil-seminars-hover-smoothness: 70ms;
+            --akil-seminars-fall-smoothness: 250ms;
+            --akil-seminars-perspective: 2000px;
+
+
+            --akil-contact-primary-color: #000;
+            --akil-contact-secondary-color: #333;
+            --akil-contact-tertiary-color: #666;
+            --akil-contact-light-gray: #f5f5f5;
+            --akil-contact-border-color: #eee;
+            --akil-contact-white: #fff;
+            --akil-contact-subtle-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         /* Technologies Section Start */
@@ -165,6 +183,1086 @@
         }
 
         /* Technologies Section End */
+        /* Awards & Certificates Section Start */
+        .akil-news-container {
+            width: 100%;
+            margin: 0;
+            background: #ffffff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            min-height: 100vh;
+        }
+
+        /* Newspaper Header */
+        .akil-news-header {
+            border-bottom: 4px solid #000;
+            padding: 40px 3% 30px;
+            background: #fff;
+            position: relative;
+        }
+
+        .akil-news-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: repeating-linear-gradient(90deg,
+                    #000 0px,
+                    #000 2px,
+                    #fff 2px,
+                    #fff 8px);
+        }
+
+        .akil-news-masthead {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .akil-news-title {
+            font-family: 'Old Standard TT', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #000;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .akil-news-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .akil-news-publication-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .akil-news-date-info {
+            font-weight: 600;
+        }
+
+        .akil-news-edition-info {
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .akil-news-content {
+            padding: 40px 3%;
+        }
+
+        .akil-news-headline-section {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #000;
+        }
+
+        .akil-news-main-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #000;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .akil-news-headline-subtext {
+            font-size: 1.3rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .akil-news-byline {
+            font-size: 0.95rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+            display: inline-block;
+        }
+
+        /* Column Layout */
+        .akil-news-columns {
+            column-count: 4;
+            column-gap: 30px;
+            column-rule: 1px solid #ddd;
+            column-fill: balance;
+            text-align: justify;
+            margin-top: 40px;
+            line-height: 1.6;
+            text-rendering: optimizeLegibility;
+        }
+
+        .akil-news-article {
+            break-inside: avoid;
+            margin-bottom: 25px;
+            padding: 0;
+            border-bottom: 1px solid #eee;
+            page-break-inside: avoid;
+            orphans: 3;
+            widows: 3;
+        }
+
+        .akil-news-article-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 8px;
+            line-height: 1.3;
+            text-align: left;
+            hyphens: auto;
+            word-wrap: break-word;
+        }
+
+        .akil-news-article-category {
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .akil-news-article-content {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #333;
+            text-align: justify;
+            hyphens: auto;
+            word-spacing: -0.05em;
+            margin-bottom: 12px;
+        }
+
+        .akil-news-article-date {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 12px;
+            margin-bottom: 15px;
+            font-style: italic;
+            text-align: left;
+        }
+
+        /* Special Features */
+        .akil-news-featured-box {
+            border: 3px solid #000;
+            padding: 20px;
+            margin: 25px 0;
+            background: #f9f9f9;
+            break-inside: avoid;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+
+        .akil-news-featured-box .akil-news-article-headline {
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .akil-news-featured-box .akil-news-article-content {
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+
+        .akil-news-stats-box {
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+            break-inside: avoid;
+            box-sizing: border-box;
+            page-break-inside: avoid;
+        }
+
+
+        .akil-news-stats-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .akil-news-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .akil-news-stat-item {
+            text-align: center;
+        }
+
+        .akil-news-stat-number {
+            font-family: 'Old Standard TT', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .akil-news-stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Achievement List */
+        .akil-news-achievement-list {
+            background: #f8f8f8;
+            border: 2px solid #000;
+            padding: 15px;
+            margin: 25px 0;
+            break-inside: avoid;
+            box-sizing: border-box;
+            page-break-inside: avoid;
+        }
+
+
+        .akil-news-achievement-list h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #000;
+        }
+
+        .akil-news-achievement-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 6px 0;
+            border-bottom: 1px dotted #ccc;
+            text-align: left;
+        }
+
+        .akil-news-achievement-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .akil-news-achievement-number {
+            font-family: 'Old Standard TT', serif;
+            font-weight: 700;
+            font-size: 1rem;
+            width: 25px;
+            text-align: left;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .akil-news-achievement-name {
+            flex: 1;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-right: 8px;
+        }
+
+        .akil-news-achievement-year {
+            font-size: 0.8rem;
+            color: #666;
+            font-style: italic;
+            flex-shrink: 0;
+        }
+
+        /* Advertisement Style Boxes */
+        .akil-news-ad-box {
+            border: 2px solid #000;
+            padding: 15px;
+            text-align: center;
+            margin: 25px 0;
+            background: #fff;
+            break-inside: avoid;
+            box-sizing: border-box;
+        }
+
+
+        .akil-news-ad-box h4 {
+            font-family: 'Old Standard TT', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .akil-news-ad-box p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1600px) {
+            .akil-news-columns {
+                column-count: 4;
+                column-gap: 25px;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            .akil-news-columns {
+                column-count: 3;
+                column-gap: 25px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .akil-news-title {
+                font-size: 3rem;
+            }
+
+            .akil-news-main-headline {
+                font-size: 2.8rem;
+            }
+
+            .akil-news-columns {
+                column-count: 2;
+                column-gap: 25px;
+            }
+
+            .akil-news-header,
+            .akil-news-content {
+                padding: 30px 2%;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .akil-news-header,
+            .akil-news-content {
+                padding: 30px 4%;
+            }
+
+            .akil-news-title {
+                font-size: 2.5rem;
+            }
+
+            .akil-news-main-headline {
+                font-size: 2.2rem;
+            }
+
+            .akil-news-columns {
+                column-count: 1;
+                column-gap: 0;
+                column-rule: none;
+            }
+
+            .akil-news-publication-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .akil-news-header,
+            .akil-news-content {
+                padding: 20px 5%;
+            }
+
+            .akil-news-title {
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+
+            .akil-news-main-headline {
+                font-size: 1.8rem;
+            }
+
+            .akil-news-stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .akil-news-container {
+                box-shadow: none;
+                width: 100%;
+            }
+
+            .akil-news-columns {
+                column-count: 4;
+                column-gap: 20px;
+            }
+
+            .akil-news-header,
+            .akil-news-content {
+                padding: 20px 1%;
+            }
+        }
+
+        /* Static Layout */
+        .akil-news-article {
+            opacity: 1;
+            position: relative;
+            padding: 0;
+        }
+
+
+        /* Newspaper Images */
+        .akil-news-image {
+            width: 100%;
+            height: auto;
+            border: 2px solid #000;
+            margin: 15px 0;
+            break-inside: avoid;
+        }
+
+        .akil-news-image-small {
+            max-width: 180px;
+            float: left;
+            margin: 0 12px 12px 0;
+            clear: none;
+        }
+
+        .akil-news-image-medium {
+            max-width: 100%;
+            margin: 15px 0;
+            display: block;
+        }
+
+        .akil-news-image-large {
+            width: 100%;
+            margin: 20px 0;
+            display: block;
+            clear: both;
+        }
+
+        .akil-news-image-caption {
+            font-size: 0.8rem;
+            color: #666;
+            font-style: italic;
+            text-align: left;
+            margin-top: 5px;
+            padding: 6px;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            line-height: 1.3;
+            clear: both;
+        }
+
+        .akil-news-image-credit {
+            font-size: 0.7rem;
+            color: #999;
+            text-align: right;
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .akil-news-photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+            break-inside: avoid;
+        }
+
+        .akil-news-gallery-item {
+            position: relative;
+        }
+
+        .akil-news-gallery-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border: 1px solid #000;
+        }
+
+        .akil-news-gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 8px;
+            font-size: 0.7rem;
+            line-height: 1.2;
+        }
+
+        .akil-news-portrait-frame {
+            width: 100px;
+            height: 125px;
+            border: 3px solid #000;
+            float: right;
+            margin: 0 0 12px 12px;
+            background: #f0f0f0;
+            position: relative;
+            break-inside: avoid;
+            clear: none;
+        }
+
+        .akil-news-portrait-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .akil-news-portrait-frame::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 1px solid #666;
+        }
+
+        @media (max-width: 768px) {
+
+            .akil-news-image-small,
+            .akil-news-portrait-frame {
+                float: none;
+                display: block;
+                margin: 15px auto;
+                max-width: 250px;
+            }
+
+            .akil-news-photo-gallery {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .akil-news-image-medium {
+                max-width: 100%;
+            }
+
+            .akil-news-image-large {
+                margin: 15px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .akil-news-portrait-frame {
+                width: 100px;
+                height: 125px;
+            }
+
+            .akil-news-photo-gallery {
+                gap: 8px;
+            }
+
+            .akil-news-gallery-item img {
+                height: 120px;
+            }
+        }
+
+        /* Global image grayscale effect for all images in awards section */
+        .akil-news-container img {
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .akil-news-container img:hover {
+            filter: grayscale(0%);
+        }
+
+        /* Awards & Certificates Section End */
+        /* Seminars Section Start */
+
+        .akil-seminars-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Manrope", sans-serif;
+            background: var(--akil-seminars-clr-bg);
+            color: var(--akil-seminars-clr-text);
+            overflow: hidden;
+            padding: 1em;
+        }
+
+        .akil-seminars-nav {
+            --akil-seminars-r: calc(var(--akil-seminars-max-z) * (var(--akil-seminars-p) - 1) + var(--akil-seminars-z));
+            --akil-seminars-r-n: calc((var(--akil-seminars-r) - 1) / (var(--akil-seminars-max-z) * var(--akil-seminars-max-p) - 1));
+            height: 400px;
+            width: min(1400px, 95%);
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            perspective: var(--akil-seminars-perspective);
+            transform-style: preserve-3d;
+            --akil-seminars-dir: 0deg;
+        }
+
+        @media (max-width: 40rem) {
+            .akil-seminars-nav {
+                writing-mode: sideways-rl;
+                --akil-seminars-dir: -90deg;
+            }
+        }
+
+        .akil-seminars-link {
+            flex: 1;
+            block-size: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            --akil-seminars-ts: calc(var(--akil-seminars-hover-smoothness) * var(--akil-seminars-falloff) + var(--akil-seminars-fall-smoothness) * (1 - var(--akil-seminars-falloff)));
+            --akil-seminars-fs: calc(.1s * var(--akil-seminars-falloff, 0) + .8s * (1 - var(--akil-seminars-falloff, 0)));
+            transition:
+                scale var(--akil-seminars-op, .15s),
+                filter var(--akil-seminars-fs),
+                transform var(--akil-seminars-ts, var(--akil-seminars-fall-smoothness)),
+                flex .3s;
+        }
+
+        .akil-seminars-link {
+            --akil-seminars-p-n: calc(var(--akil-seminars-i) / (var(--akil-seminars-max-p) - 1));
+            --akil-seminars-diff: calc(var(--akil-seminars-p-n) - var(--akil-seminars-r-n));
+            --akil-seminars-u: calc(abs(var(--akil-seminars-diff)) / var(--akil-seminars-w));
+            --akil-seminars-w: .4;
+            --akil-seminars-falloff: clamp(calc(0.5 * (1 + cos(min(var(--akil-seminars-u), 1) * 180deg))), 0, 1);
+            --akil-seminars-tilt: calc(clamp(-1, var(--akil-seminars-diff) * 5, 1) * var(--akil-seminars-falloff) * 70deg);
+            transform:
+                translateZ(calc(var(--akil-seminars-falloff) * var(--akil-seminars-hover-intensity))) rotateY(calc(var(--akil-seminars-tilt) * cos(var(--akil-seminars-dir)))) rotateX(calc(var(--akil-seminars-tilt) * sin(var(--akil-seminars-dir))));
+            filter:
+                brightness(max(.5, var(--akil-seminars-falloff, 0) * 1.2)) saturate(var(--akil-seminars-falloff, 0));
+        }
+
+        .akil-seminars-img {
+            background: var(--akil-seminars-img);
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+            margin-inline: 0.1em;
+            min-height: 150px;
+        }
+
+        .akil-seminars-hover-zone {
+            position: absolute;
+            inset: 0;
+            inset-inline: -3px;
+            display: flex;
+            z-index: 999;
+        }
+
+        .akil-seminars-hover-zone>i {
+            flex: 1;
+            transition: .3s;
+        }
+
+        .akil-seminars-hover-zone::after {
+            position: absolute;
+            inset: 0;
+        }
+
+        .akil-seminars-hover-zone:active::after,
+        .akil-seminars-hover-zone:hover:not(:has(> i:hover))::after,
+        .akil-seminars-link:focus-visible .akil-seminars-hover-zone::after {
+            content: '';
+            pointer-events: all;
+            --akil-seminars-o: 1;
+        }
+
+        .akil-seminars-nav:has(.akil-seminars-hover-zone:hover):not(:has(i:hover)),
+        .akil-seminars-nav:has(.akil-seminars-link:focus-visible) {
+            --akil-seminars-z: calc((var(--akil-seminars-max-z) + 1) / 2);
+        }
+
+        .akil-seminars-nav:has(.akil-seminars-hover-zone:hover) .akil-seminars-link:hover,
+        .akil-seminars-nav:has(.akil-seminars-link:focus-visible) .akil-seminars-link:focus-visible {
+            flex: 8;
+        }
+
+        /* ugly defines */
+        .akil-seminars-link:nth-child(1):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(1):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 1;
+        }
+
+        .akil-seminars-link:nth-child(2):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(2):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 2;
+        }
+
+        .akil-seminars-link:nth-child(3):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(3):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 3;
+        }
+
+        .akil-seminars-link:nth-child(4):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(4):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 4;
+        }
+
+        .akil-seminars-link:nth-child(5):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(5):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 5;
+        }
+
+        .akil-seminars-link:nth-child(6):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(6):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 6;
+        }
+
+        .akil-seminars-link:nth-child(7):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(7):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 7;
+        }
+
+        .akil-seminars-link:nth-child(8):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(8):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 8;
+        }
+
+        .akil-seminars-link:nth-child(9):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(9):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 9;
+        }
+
+        .akil-seminars-link:nth-child(10):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(10):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 10;
+        }
+
+        .akil-seminars-link:nth-child(11):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(11):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 11;
+        }
+
+        .akil-seminars-link:nth-child(12):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(12):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 12;
+        }
+
+        .akil-seminars-link:nth-child(13):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(13):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 13;
+        }
+
+        .akil-seminars-link:nth-child(14):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(14):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 14;
+        }
+
+        .akil-seminars-link:nth-child(15):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(15):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 15;
+        }
+
+        .akil-seminars-link:nth-child(16):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(16):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 16;
+        }
+
+        .akil-seminars-link:nth-child(17):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(17):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 17;
+        }
+
+        .akil-seminars-link:nth-child(18):is(:hover, :focus-visible)~.akil-seminars-nav,
+        .akil-seminars-nav:has(.akil-seminars-link:nth-child(18):is(:hover, :focus-visible)) {
+            --akil-seminars-p: 18;
+        }
+
+        i:nth-child(1):hover {
+            --akil-seminars-z: 1;
+        }
+
+        i:nth-child(2):hover {
+            --akil-seminars-z: 2;
+        }
+
+        i:nth-child(3):hover {
+            --akil-seminars-z: 3;
+        }
+
+        i:nth-child(4):hover {
+            --akil-seminars-z: 4;
+        }
+
+        i:nth-child(5):hover {
+            --akil-seminars-z: 5;
+        }
+
+        i:nth-child(6):hover {
+            --akil-seminars-z: 6;
+        }
+
+        i:nth-child(7):hover {
+            --akil-seminars-z: 7;
+        }
+
+        i:nth-child(8):hover {
+            --akil-seminars-z: 8;
+        }
+
+        i:nth-child(9):hover {
+            --akil-seminars-z: 9;
+        }
+
+        /* Seminars Section End */
+        /* contact us section start */
+        .akil-contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        /* Header Section */
+        .akil-contact-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .akil-contact-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            color: var(--akil-contact-primary-color);
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        .akil-contact-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--akil-contact-primary-color);
+        }
+
+        .akil-contact-subtitle {
+            font-size: 1.2rem;
+            color: var(--akil-contact-tertiary-color);
+            font-style: italic;
+            margin-top: 30px;
+        }
+
+        /* Main Content Grid */
+        .akil-contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        /* Contact Form */
+        .akil-contact-form {
+            background: var(--akil-contact-white);
+            padding: 40px;
+            border: 1px solid var(--akil-contact-border-color);
+        }
+
+        .akil-contact-form:hover {
+            box-shadow: var(--akil-contact-subtle-shadow);
+        }
+
+        .akil-contact-form-title {
+            font-size: 1.8rem;
+            color: var(--akil-contact-primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .akil-contact-form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .akil-contact-form-input,
+        .akil-contact-form-textarea {
+            width: 100%;
+            padding: 15px 0;
+            border: none;
+            border-bottom: 2px solid var(--akil-contact-border-color);
+            background: transparent;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--akil-contact-secondary-color);
+            outline: none;
+        }
+
+        .akil-contact-form-input:not(:placeholder-shown)+.akil-contact-form-label,
+        .akil-contact-form-textarea:not(:placeholder-shown)+.akil-contact-form-label {
+            font-size: 0.9rem;
+            color: var(--akil-contact-primary-color);
+        }
+
+        .akil-contact-form-label {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            font-size: 1rem;
+            color: var(--akil-contact-tertiary-color);
+            pointer-events: none;
+        }
+
+        .akil-contact-form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .akil-contact-form-button {
+            width: 100%;
+            padding: 15px;
+            background: var(--akil-contact-primary-color);
+            color: var(--akil-contact-white);
+            border: none;
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .akil-contact-form-button:hover {
+            background: var(--akil-contact-secondary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contact Info */
+        .akil-contact-info-title {
+            font-size: 1.8rem;
+            color: var(--akil-contact-primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .akil-contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid var(--akil-contact-border-color);
+            position: relative;
+        }
+
+        .akil-contact-info-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--akil-contact-light-gray);
+            z-index: -1;
+        }
+
+        .akil-contact-info-item:hover {
+            border-color: var(--akil-contact-primary-color);
+        }
+
+        .akil-contact-info-content {
+            flex: 1;
+        }
+
+        .akil-contact-info-label {
+            font-size: 0.9rem;
+            color: var(--akil-contact-tertiary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .akil-contact-info-value {
+            font-size: 1.1rem;
+            color: var(--akil-contact-secondary-color);
+            font-weight: 500;
+        }
+
+        .akil-contact-info-value a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .akil-contact-info-value a:hover {
+            color: var(--akil-contact-primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .akil-contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .akil-contact-form {
+                padding: 30px 20px;
+            }
+
+            .akil-contact-title {
+                font-size: 2.5rem;
+            }
+
+            .akil-contact-info-item {
+                padding: 15px;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+            .akil-contact-container {
+                padding: 20px 15px;
+            }
+
+            .akil-contact-form {
+                padding: 20px;
+            }
+
+            .akil-contact-form-title,
+            .akil-contact-info-title {
+                font-size: 1.5rem;
+            }
+
+            .akil-contact-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Focus states for accessibility */
+        .akil-contact-form-input:focus,
+        .akil-contact-form-textarea:focus,
+        .akil-contact-form-button:focus {
+            outline: none;
+        }
+
+        /* contact us section end */
         * {
             margin: 0;
             padding: 0;
@@ -172,7 +1270,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Crimson Text', serif;
             line-height: 1.6;
             color: #333;
             background: white;
@@ -620,69 +1718,256 @@
 
         <section id="awards">
             <h2>Awards & Certificates</h2>
+            <div class="akil-news-container">
+                <header class="akil-news-header">
+                    <div class="akil-news-masthead">
+                        <h1 class="akil-news-title">The Achievement Herald</h1>
+                        <p class="akil-news-subtitle">Excellence in Professional Development</p>
+                    </div>
+                    <div class="akil-news-publication-info">
+                        <div class="akil-news-date-info">Saturday, October 18, 2025</div>
+                        <div class="akil-news-edition-info">Professional Portfolio Edition</div>
+                    </div>
+                </header>
 
-            <div class="project">
-                <h3>Best Web Design Award</h3>
-                <p>Tech Conference 2024 | First Place</p>
-                <p>Recognized for innovative user interface design and exceptional user experience in web development
-                </p>
+                <main class="akil-news-content">
+                    <section class="akil-news-headline-section">
+                        <h1 class="akil-news-main-headline">Outstanding Professional Achievements</h1>
+                        <p class="akil-news-headline-subtext">A comprehensive collection of certifications and
+                            recognitions</p>
+                        <div class="akil-news-byline">By Akil - Career Development Correspondent</div>
+
+                        <div class="akil-news-portrait-frame">
+                            <img src="https://picsum.photos/120/150?random=1" alt="Akil Portrait">
+                        </div>
+                    </section>
+
+                    <div class="akil-news-columns">
+                        <div class="akil-news-stats-box">
+                            <h3>Achievement Statistics</h3>
+                            <div class="akil-news-stats-grid">
+                                <div class="akil-news-stat-item">
+                                    <span class="akil-news-stat-number">16</span>
+                                    <span class="akil-news-stat-label">Total Awards</span>
+                                </div>
+                                <div class="akil-news-stat-item">
+                                    <span class="akil-news-stat-number">8</span>
+                                    <span class="akil-news-stat-label">Categories</span>
+                                </div>
+                                <div class="akil-news-stat-item">
+                                    <span class="akil-news-stat-number">5</span>
+                                    <span class="akil-news-stat-label">Years Active</span>
+                                </div>
+                                <div class="akil-news-stat-item">
+                                    <span class="akil-news-stat-number">100%</span>
+                                    <span class="akil-news-stat-label">Excellence</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <article class="akil-news-article akil-news-featured-box">
+                            <h2 class="akil-news-article-headline">Excellence in Innovation Award</h2>
+                            <div class="akil-news-article-category">Professional Recognition</div>
+
+                            <img src="https://picsum.photos/300/200?random=2" alt="Innovation Award Ceremony"
+                                class="akil-news-image akil-news-image-medium">
+                            <div class="akil-news-image-caption">
+                                Award ceremony held at the Tech Innovation Summit, recognizing outstanding contributions
+                                to technological advancement.
+                                <div class="akil-news-image-credit">Photo by Herald Staff</div>
+                            </div>
+
+                            <div class="akil-news-article-content">
+                                Recognized for outstanding contributions to innovative technology solutions and creative
+                                problem-solving approaches in software development. This prestigious award highlights
+                                exceptional dedication to pushing technological boundaries.
+                            </div>
+                            <div class="akil-news-article-date">Awarded December 2024</div>
+                        </article>
+
+                        <article class="akil-news-article">
+                            <h2 class="akil-news-article-headline">Best Developer of the Year</h2>
+                            <div class="akil-news-article-category">Industry Excellence</div>
+
+                            <img src="https://picsum.photos/180/120?random=3" alt="Developer Award Trophy"
+                                class="akil-news-image akil-news-image-small">
+
+                            <div class="akil-news-article-content">
+                                Awarded for exceptional coding skills, mentorship contributions, and positive impact on
+                                the developer community. Recognition from peers and industry leaders across the
+                                technology sector.
+
+                                <div class="akil-news-image-caption">
+                                    The prestigious Developer of the Year trophy, awarded annually to outstanding
+                                    contributors in software development.
+                                </div>
+                            </div>
+                            <div class="akil-news-article-date">November 2024</div>
+                        </article>
+
+                        <article class="akil-news-article">
+                            <h2 class="akil-news-article-headline">Project Excellence Award</h2>
+                            <div class="akil-news-article-category">Management Achievement</div>
+                            <div class="akil-news-article-content">
+                                Recognition for delivering high-quality projects that exceed client expectations and
+                                demonstrate technical excellence in execution.
+                            </div>
+                            <div class="akil-news-article-date">October 2024</div>
+                        </article>
+
+                        <div class="akil-news-achievement-list">
+                            <h3>Technical Certifications</h3>
+                            <div class="akil-news-achievement-item">
+                                <span class="akil-news-achievement-number">01</span>
+                                <span class="akil-news-achievement-name">Full Stack Developer Certification</span>
+                                <span class="akil-news-achievement-year">2024</span>
+                            </div>
+                            <div class="akil-news-achievement-item">
+                                <span class="akil-news-achievement-number">02</span>
+                                <span class="akil-news-achievement-name">AWS Solutions Architect</span>
+                                <span class="akil-news-achievement-year">2024</span>
+                            </div>
+                            <div class="akil-news-achievement-item">
+                                <span class="akil-news-achievement-number">03</span>
+                                <span class="akil-news-achievement-name">Blockchain Developer Certificate</span>
+                                <span class="akil-news-achievement-year">2024</span>
+                            </div>
+                            <div class="akil-news-achievement-item">
+                                <span class="akil-news-achievement-number">04</span>
+                                <span class="akil-news-achievement-name">UI/UX Design Professional</span>
+                                <span class="akil-news-achievement-year">2024</span>
+                            </div>
+                            <div class="akil-news-achievement-item">
+                                <span class="akil-news-achievement-number">05</span>
+                                <span class="akil-news-achievement-name">DevOps Engineer Certification</span>
+                                <span class="akil-news-achievement-year">2024</span>
+                            </div>
+                            <div class="akil-news-achievement-item">
+                                <span class="akil-news-achievement-number">06</span>
+                                <span class="akil-news-achievement-name">Cybersecurity Specialist</span>
+                                <span class="akil-news-achievement-year">2024</span>
+                            </div>
+                        </div>
+
+                        <div class="akil-news-photo-gallery">
+                            <div class="akil-news-gallery-item">
+                                <img src="https://picsum.photos/200/150?random=4" alt="Certificate Display">
+                                <div class="akil-news-gallery-caption">Professional certification display board</div>
+                            </div>
+                            <div class="akil-news-gallery-item">
+                                <img src="https://picsum.photos/200/150?random=5" alt="Training Session">
+                                <div class="akil-news-gallery-caption">Technical training workshop session</div>
+                            </div>
+                            <div class="akil-news-gallery-item">
+                                <img src="https://picsum.photos/200/150?random=6" alt="Conference Presentation">
+                                <div class="akil-news-gallery-caption">Presenting at technology conference</div>
+                            </div>
+                            <div class="akil-news-gallery-item">
+                                <img src="https://picsum.photos/200/150?random=7" alt="Team Collaboration">
+                                <div class="akil-news-gallery-caption">Collaborative development session</div>
+                            </div>
+                        </div>
+
+                        <article class="akil-news-article">
+                            <h2 class="akil-news-article-headline">Mobile Development Expertise</h2>
+                            <div class="akil-news-article-category">Technical Skills</div>
+                            <div class="akil-news-article-content">
+                                Advanced certification in mobile application development, covering both iOS and Android
+                                platforms with modern development frameworks.
+                            </div>
+                            <div class="akil-news-article-date">September 2024</div>
+                        </article>
+
+                        <article class="akil-news-article">
+                            <h2 class="akil-news-article-headline">Machine Learning Engineering</h2>
+                            <div class="akil-news-article-category">Artificial Intelligence</div>
+                            <div class="akil-news-article-content">
+                                Comprehensive certification in machine learning algorithms, neural networks, and AI
+                                applications in real-world scenarios.
+                            </div>
+                            <div class="akil-news-article-date">August 2024</div>
+                        </article>
+
+                        <div class="akil-news-ad-box">
+                            <h4>Data Science Professional</h4>
+                            <p>Advanced analytics and statistical modeling certification demonstrating expertise in
+                                data-driven decision making.</p>
+                        </div>
+
+                        <article class="akil-news-article">
+                            <h2 class="akil-news-article-headline">Academic Excellence Recognition</h2>
+                            <div class="akil-news-article-category">Educational Achievement</div>
+
+                            <img src="https://picsum.photos/400/250?random=8" alt="University Graduation Ceremony"
+                                class="akil-news-image akil-news-image-large">
+                            <div class="akil-news-image-caption">
+                                University graduation ceremony where academic excellence was recognized with Dean's List
+                                honors.
+                                <div class="akil-news-image-credit">University Communications</div>
+                            </div>
+
+                            <div class="akil-news-article-content">
+                                Dean's List recognition for maintaining outstanding GPA and demonstrating exceptional
+                                performance in computer science coursework. This honor is awarded to students who
+                                achieve academic excellence while maintaining a rigorous course load.
+                            </div>
+                            <div class="akil-news-article-date">Spring 2024</div>
+                        </article>
+
+                        <article class="akil-news-article">
+                            <h2 class="akil-news-article-headline">Research Excellence Award</h2>
+                            <div class="akil-news-article-category">Academic Research</div>
+
+                            <img src="https://picsum.photos/180/120?random=9" alt="Research Laboratory"
+                                class="akil-news-image akil-news-image-small">
+
+                            <div class="akil-news-article-content">
+                                Recognition for outstanding research contributions in machine learning and artificial
+                                intelligence applications with published findings. The research has been published in
+                                peer-reviewed journals and presented at international conferences.
+
+                                <div class="akil-news-image-caption">
+                                    State-of-the-art research laboratory where groundbreaking AI research is conducted.
+                                    <div class="akil-news-image-credit">Research Division</div>
+                                </div>
+                            </div>
+                            <div class="akil-news-article-date">March 2024</div>
+                        </article>
+
+                        <article class="akil-news-article">
+                            <h2 class="akil-news-article-headline">Innovation Challenge Winner</h2>
+                            <div class="akil-news-article-category">Competition Success</div>
+                            <div class="akil-news-article-content">
+                                First place winner in technical innovation challenge, demonstrating creative
+                                problem-solving and implementation skills.
+                            </div>
+                            <div class="akil-news-article-date">February 2024</div>
+                        </article>
+
+                        <div class="akil-news-ad-box">
+                            <h4>Continuous Learning</h4>
+                            <p>Commitment to ongoing professional development through certifications, workshops, and
+                                industry conferences.</p>
+                        </div>
+                    </div>
+                </main>
             </div>
 
-            <div class="project">
-                <h3>Google Analytics Certified</h3>
-                <p>Google | 2023</p>
-                <p>Certified in Google Analytics for measuring and analyzing website performance and user behavior</p>
-            </div>
 
-            <div class="project">
-                <h3>Outstanding Student Achievement</h3>
-                <p>University Name | 2023</p>
-                <p>Awarded for academic excellence and leadership in computer science program</p>
-            </div>
 
-            <div class="project">
-                <h3>AWS Cloud Practitioner</h3>
-                <p>Amazon Web Services | 2022</p>
-                <p>Certified in cloud computing fundamentals and AWS services for scalable web applications</p>
-            </div>
+
+
         </section>
 
         <section id="seminars">
             <h2>Seminars & Classes</h2>
+            <div class="akil-seminars-wrapper">
 
-            <div class="project">
-                <h3>Securing and Monitoring EC2 and Route 53</h3>
-                <p>Conducted across 20+ colleges in Coimbatore and Erode</p>
-                <p>Comprehensive seminar on AWS security best practices, EC2 instance management, and Route 53 DNS
-                    configuration for scalable web applications</p>
-            </div>
+                <div class="akil-seminars-nav akil-seminars-body"
+                    style="--akil-seminars-max-p:18; --akil-seminars-max-z:9;">
+                    <!-- Gallery items will be generated by JavaScript -->
+                </div>
 
-            <div class="project">
-                <h3>Enhancing Spring Boot Applications with RabbitMQ</h3>
-                <p>Interactive Workshop Series | 2023-2024</p>
-                <p>Hands-on workshop covering asynchronous task processing, message queuing, and microservices
-                    architecture using Spring Boot and RabbitMQ</p>
-            </div>
-
-            <div class="project">
-                <h3>Developing Cross-Platform Desktop Applications with Swing</h3>
-                <p>Technical Training Session | 2023</p>
-                <p>Practical session on Java Swing development, GUI design principles, and creating cross-platform
-                    desktop applications</p>
-            </div>
-
-            <div class="project">
-                <h3>Building Web Applications with Quarkus</h3>
-                <p>Advanced Development Workshop | 2023</p>
-                <p>From basics to advanced concepts in Quarkus framework, including cloud-native development and
-                    performance optimization</p>
-            </div>
-
-            <div class="project">
-                <h3>Software Development Best Practices</h3>
-                <p>Industry Knowledge Sharing | 2022-2024</p>
-                <p>Comprehensive seminars featuring interactive learning, live demonstrations, and tailored Q&A segments
-                    on software development methodologies and industry standards</p>
             </div>
         </section>
 
@@ -717,14 +2002,92 @@
         </section>
 
         <section id="contact">
-            <h2>Contact</h2>
-            <div class="contact">
-                <a href="mailto:akilthangavel@gmail.com">Email</a>
-                <a href="tel:+919488223505">Phone</a>
-                <a href="https://www.algosync.org" target="_blank">Website</a>
-                <a href="https://linkedin.com/in/akilthangavel" target="_blank">LinkedIn</a>
+            <!-- Main Container -->
+            <div class="akil-contact-container">
+                <!-- Header -->
+                <header class="akil-contact-header">
+                    <h1 class="akil-contact-title">Get In Touch</h1>
+                    <p class="akil-contact-subtitle">Let's create something amazing together</p>
+                </header>
+
+                <!-- Main Content -->
+                <div class="akil-contact-content">
+                    <!-- Contact Form -->
+                    <div class="akil-contact-form">
+                        <h2 class="akil-contact-form-title">Send a Message</h2>
+                        <form id="akilContactForm" action="#" method="POST">
+                            <div class="akil-contact-form-group">
+                                <input type="text" class="akil-contact-form-input" id="akilContactName" name="name"
+                                    placeholder=" " required>
+                                <label class="akil-contact-form-label" for="akilContactName">Your Name</label>
+                            </div>
+
+                            <div class="akil-contact-form-group">
+                                <input type="email" class="akil-contact-form-input" id="akilContactEmail" name="email"
+                                    placeholder=" " required>
+                                <label class="akil-contact-form-label" for="akilContactEmail">Email Address</label>
+                            </div>
+
+                            <div class="akil-contact-form-group">
+                                <input type="text" class="akil-contact-form-input" id="akilContactSubject"
+                                    name="subject" placeholder=" " required>
+                                <label class="akil-contact-form-label" for="akilContactSubject">Subject</label>
+                            </div>
+
+                            <div class="akil-contact-form-group">
+                                <textarea class="akil-contact-form-textarea" id="akilContactMessage" name="message"
+                                    placeholder=" " required></textarea>
+                                <label class="akil-contact-form-label" for="akilContactMessage">Your Message</label>
+                            </div>
+
+                            <button type="submit" class="akil-contact-form-button">Send Message</button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="akil-contact-info">
+                        <h2 class="akil-contact-info-title">Contact Information</h2>
+
+                        <div class="akil-contact-info-item">
+                            <div class="akil-contact-info-content">
+                                <div class="akil-contact-info-label">Email</div>
+                                <div class="akil-contact-info-value">
+                                    <a href="mailto:akilthangavel@gmail.com">akilthangavel@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="akil-contact-info-item">
+                            <div class="akil-contact-info-content">
+                                <div class="akil-contact-info-label">Phone</div>
+                                <div class="akil-contact-info-value">
+                                    <a href="tel:+919488223505">+91 9488223505</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="akil-contact-info-item">
+                            <div class="akil-contact-info-content">
+                                <div class="akil-contact-info-label">Website</div>
+                                <div class="akil-contact-info-value">
+                                    <a href="https://www.algosync.org" target="_blank">www.algosync.org</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="akil-contact-info-item">
+                            <div class="akil-contact-info-content">
+                                <div class="akil-contact-info-label">LinkedIn</div>
+                                <div class="akil-contact-info-value">
+                                    <a href="https://linkedin.com/in/akilthangavel"
+                                        target="_blank">linkedin.com/in/akilthangavel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <p style="margin-top: 20px; color: #666;">Location: Palani, Dindigul, Tamil Nadu</p>
         </section>
     </div>
 
@@ -768,6 +2131,45 @@
             <p>&copy; 2024 Akil Thangavel. All rights reserved. | Built with HTML & CSS</p>
         </div>
     </footer>
+    <script>
+        // Array of Unsplash image URLs
+        const imageUrls = [
+            'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1280&h=720&fit=crop', // Mountains
+            'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1280&h=720&fit=crop', // Forest
+            'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1280&h=720&fit=crop', // Beach
+            'https://images.unsplash.com/photo-1494972308805-463bc619d34e?w=1280&h=720&fit=crop', // City
+            'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1280&h=720&fit=crop', // Desert
+            'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1280&h=720&fit=crop', // Lake
+            'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1280&h=720&fit=crop', // Space
+            'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=1280&h=720&fit=crop', // Street
+            'https://images.unsplash.com/photo-1505842465776-3ac65e95b1d0?w=1280&h=720&fit=crop', // Architecture
+            'https://images.unsplash.com/photo-1503264116251-35a269479413?w=1280&h=720&fit=crop', // Sky
+            'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1280&h=720&fit=crop', // Forest Path
+            'https://images.unsplash.com/photo-1493244040629-496f6d136cc3?w=1280&h=720&fit=crop', // Sunset
+            'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1280&h=720&fit=crop', // Ocean
+            'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1280&h=720&fit=crop', // Waterfall
+            'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1280&h=720&fit=crop', // Stars
+            'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1280&h=720&fit=crop', // Canyon
+            'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=1280&h=720&fit=crop', // Tropical
+            'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=1280&h=720&fit=crop'  // Fields
+        ];
+
+        document.querySelector('.akil-seminars-nav').innerHTML =
+            Array.from({ length: 18 }, (_, i) => `
+          <a href="#" class="akil-seminars-link" style="--akil-seminars-i:${i + 1};--akil-seminars-img:url('${imageUrls[i]}')">
+            <div class="akil-seminars-img"></div>
+            <aside class="akil-seminars-hover-zone">
+              ${Array.from({ length: 9 }, () => '<i></i>').join('')}
+            </aside>
+          </a>`).join('');
+
+        // Prevent default click behavior on all links
+        document.querySelectorAll('.akil-seminars-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+            });
+        });
+    </script>
 </body>
 
 </html>

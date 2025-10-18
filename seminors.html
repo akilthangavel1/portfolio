@@ -8,9 +8,9 @@
 <style>
 :root {
   font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
-  --akil-seminars-clr-bg: #020617;
-  --akil-seminars-clr-text: #fff;
-  --akil-seminars-clr-primary: #fff;
+  --akil-seminars-clr-bg: #ffffff;
+  --akil-seminars-clr-text: #000;
+  --akil-seminars-clr-primary: #000;
   
   --akil-seminars-hover-intensity: 10rem;
   --akil-seminars-hover-smoothness: 70ms; 
@@ -18,21 +18,21 @@
   --akil-seminars-perspective: 2000px;
 }
 
-.akil-seminars-body {
-  height: 100svh;
-  display: grid;
-  place-items: center;
-  font-family: "Manrope", sans-serif;
-  background: var(--akil-seminars-clr-bg);
-  color: var(--akil-seminars-clr-text);
-  overflow: hidden;
-  padding: 2em;
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.akil-seminars-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Manrope", sans-serif;
+  background: var(--akil-seminars-clr-bg);
+  color: var(--akil-seminars-clr-text);
+  overflow: hidden;
+  padding: 1em;
 }
 
 .akil-seminars-nav {  
@@ -132,103 +132,6 @@
   flex: 4;
 }
 
-/* debug check */
-.akil-seminars-debug-label {
-  position: fixed;
-  bottom: 1em;
-  cursor: pointer;
-  user-select: none;
-  transition: var(--akil-seminars-h, .3s);
-  opacity: .3;
-  display: inline-flex;
-}
-.akil-seminars-debug-label:hover {
-  opacity: .5;
-  letter-spacing: 5px;
-  --akil-seminars-h: .1s;
-}
-.akil-seminars-debug-label::after {
-  content: 'ing..';
-  max-width: var(--akil-seminars-ing, 0px);
-  overflow: hidden;
-  display: inherit;
-  transition: .3s;
-}
-.akil-seminars-debug-label:has(> :focus-visible) {
-  outline: solid 1px currentColor;
-}
-.akil-seminars-debug-label:has(> :checked) {
-  opacity: 1;
-  --akil-seminars-ing: max-content;
-}
-#akil-seminars-dbg {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* debugging info */
-.akil-seminars-body .akil-seminars-nav::before {
-  counter-set: 
-    akil-seminars-pic var(--akil-seminars-p) 
-    akil-seminars-zone var(--akil-seminars-z) 
-    akil-seminars-region var(--akil-seminars-r)
-    akil-seminars-region-norm calc(var(--akil-seminars-r-n) * 100);
-  content: 'debug:\a r: ' counter(akil-seminars-region) '\9(' counter(akil-seminars-region-norm) '%)\ap: ' counter(akil-seminars-pic) '\9z: ' counter(akil-seminars-zone);
-  white-space: pre-wrap;
-  writing-mode: horizontal-tb;
-  position: fixed;
-  inset-block-end: -1em;
-  transform: translateY(100%);
-  opacity: 0;
-  font-size: .5em;
-  transition: opacity .3s;
-  pointer-events: none;
-}
-
-.akil-seminars-img::before {
-  counter-set: 
-    akil-seminars-item var(--akil-seminars-i) 
-    akil-seminars-falloff calc(var(--akil-seminars-falloff, 0) * 100)
-    akil-seminars-diff calc(var(--akil-seminars-diff, 0) * 100);
-  content: "\ai: " counter(akil-seminars-item) "\ad:" counter(akil-seminars-diff) "\af:" counter(akil-seminars-falloff) "%";
-  font-size: .5em;
-  white-space: pre;
-  position: fixed;
-  inset-block-end: 100%;
-  opacity: .0;
-  transition: .3s;
-  transition-delay: calc(var(--akil-seminars-i) * 25ms);
-  pointer-events: none;
-  block-size: 0px;
-  overflow: hidden;
-}
-
-.akil-seminars-hover-zone::after {
-  font-size: 0.5em;
-  text-align: center;
-  align-content: center;
-  background: #0005;
-  transition: opacity .5s, letter-spacing var(--akil-seminars-h, .3s);
-  opacity: 0;
-  overflow: hidden;
-  writing-mode: sideways-lr;
-  pointer-events: none;
-}
-
-.akil-seminars-hover-zone:active::after {
-  letter-spacing: 5px;
-  --akil-seminars-h: 50ms;
-}
-
-.akil-seminars-body:has(#akil-seminars-dbg:checked) .akil-seminars-nav::before,
-.akil-seminars-body:has(#akil-seminars-dbg:checked) .akil-seminars-img::before {opacity: .3;}
-.akil-seminars-body:has(#akil-seminars-dbg:checked) .akil-seminars-img::before {block-size: auto;}
-.akil-seminars-body:has(#akil-seminars-dbg:checked) i:nth-child(odd) {background: #0003;}
-.akil-seminars-body:has(#akil-seminars-dbg:checked) i:hover {background: #fff5; transition: 0ms;}
-.akil-seminars-body:has(#akil-seminars-dbg:checked) .akil-seminars-link:hover {outline: #fff5 solid 3px;}
-.akil-seminars-body:has(#akil-seminars-dbg:checked) .akil-seminars-hover-zone::after {opacity: var(--akil-seminars-o, 0); content: 'clicked';}
-
 /* ugly defines */
 .akil-seminars-link:nth-child(1):is(:hover,:focus-visible) ~ .akil-seminars-nav, .akil-seminars-nav:has(.akil-seminars-link:nth-child(1):is(:hover,:focus-visible)) {--akil-seminars-p: 1;}
 .akil-seminars-link:nth-child(2):is(:hover,:focus-visible) ~ .akil-seminars-nav, .akil-seminars-nav:has(.akil-seminars-link:nth-child(2):is(:hover,:focus-visible)) {--akil-seminars-p: 2;}
@@ -254,15 +157,14 @@ i:nth-child(8):hover {--akil-seminars-z: 8;}
 i:nth-child(9):hover {--akil-seminars-z: 9;}
 </style>
 </head>
-<body class="akil-seminars-body">
+<body>
 
-<nav class="akil-seminars-nav" style="--akil-seminars-max-p:12; --akil-seminars-max-z:9;">
-  <!-- Gallery items will be generated by JavaScript -->
-</nav>
+<div class="akil-seminars-wrapper">
+  <div class="akil-seminars-nav akil-seminars-body" style="--akil-seminars-max-p:12; --akil-seminars-max-z:9;">
+    <!-- Gallery items will be generated by JavaScript -->
+  </div>
 
-<label for="akil-seminars-dbg" class="akil-seminars-debug-label">debug
-  <input id="akil-seminars-dbg" type="checkbox" tabindex="1">
-</label>
+</div>
 
 <script>
 // Array of Unsplash image URLs
@@ -289,6 +191,13 @@ document.querySelector('.akil-seminars-nav').innerHTML =
       ${Array.from({length:9},()=>'<i></i>').join('')}
     </aside>
   </a>`).join('');
+
+// Prevent default click behavior on all links
+document.querySelectorAll('.akil-seminars-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+  });
+});
 </script>
 
 </body>

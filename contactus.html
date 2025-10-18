@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Akil Thangavel</title>
+    <style>
+        :root {
+            --akil-contact-primary-color: #000;
+            --akil-contact-secondary-color: #333;
+            --akil-contact-tertiary-color: #666;
+            --akil-contact-light-gray: #f5f5f5;
+            --akil-contact-border-color: #eee;
+            --akil-contact-white: #fff;
+            --akil-contact-subtle-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            line-height: 1.6;
+            color: var(--akil-contact-secondary-color);
+            background: var(--akil-contact-white);
+            overflow-x: hidden;
+        }
+
+        /* Main Container */
+        .akil-contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        /* Header Section */
+        .akil-contact-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .akil-contact-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            color: var(--akil-contact-primary-color);
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        .akil-contact-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--akil-contact-primary-color);
+        }
+
+        .akil-contact-subtitle {
+            font-size: 1.2rem;
+            color: var(--akil-contact-tertiary-color);
+            font-style: italic;
+            margin-top: 30px;
+        }
+
+        /* Main Content Grid */
+        .akil-contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        /* Contact Form */
+        .akil-contact-form {
+            background: var(--akil-contact-white);
+            padding: 40px;
+            border: 1px solid var(--akil-contact-border-color);
+        }
+
+        .akil-contact-form:hover {
+            box-shadow: var(--akil-contact-subtle-shadow);
+        }
+
+        .akil-contact-form-title {
+            font-size: 1.8rem;
+            color: var(--akil-contact-primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .akil-contact-form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .akil-contact-form-input,
+        .akil-contact-form-textarea {
+            width: 100%;
+            padding: 15px 0;
+            border: none;
+            border-bottom: 2px solid var(--akil-contact-border-color);
+            background: transparent;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--akil-contact-secondary-color);
+            outline: none;
+        }
+
+        .akil-contact-form-input:not(:placeholder-shown) + .akil-contact-form-label,
+        .akil-contact-form-textarea:not(:placeholder-shown) + .akil-contact-form-label {
+            font-size: 0.9rem;
+            color: var(--akil-contact-primary-color);
+        }
+
+        .akil-contact-form-label {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            font-size: 1rem;
+            color: var(--akil-contact-tertiary-color);
+            pointer-events: none;
+        }
+
+        .akil-contact-form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .akil-contact-form-button {
+            width: 100%;
+            padding: 15px;
+            background: var(--akil-contact-primary-color);
+            color: var(--akil-contact-white);
+            border: none;
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .akil-contact-form-button:hover {
+            background: var(--akil-contact-secondary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contact Info */
+        .akil-contact-info-title {
+            font-size: 1.8rem;
+            color: var(--akil-contact-primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .akil-contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid var(--akil-contact-border-color);
+            position: relative;
+        }
+
+        .akil-contact-info-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--akil-contact-light-gray);
+            z-index: -1;
+        }
+
+        .akil-contact-info-item:hover {
+            border-color: var(--akil-contact-primary-color);
+        }
+
+        .akil-contact-info-content {
+            flex: 1;
+        }
+
+        .akil-contact-info-label {
+            font-size: 0.9rem;
+            color: var(--akil-contact-tertiary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .akil-contact-info-value {
+            font-size: 1.1rem;
+            color: var(--akil-contact-secondary-color);
+            font-weight: 500;
+        }
+
+        .akil-contact-info-value a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .akil-contact-info-value a:hover {
+            color: var(--akil-contact-primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .akil-contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .akil-contact-form {
+                padding: 30px 20px;
+            }
+
+            .akil-contact-title {
+                font-size: 2.5rem;
+            }
+
+            .akil-contact-info-item {
+                padding: 15px;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+            .akil-contact-container {
+                padding: 20px 15px;
+            }
+
+            .akil-contact-form {
+                padding: 20px;
+            }
+
+            .akil-contact-form-title,
+            .akil-contact-info-title {
+                font-size: 1.5rem;
+            }
+
+            .akil-contact-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Focus states for accessibility */
+        .akil-contact-form-input:focus,
+        .akil-contact-form-textarea:focus,
+        .akil-contact-form-button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Main Container -->
+    <div class="akil-contact-container">
+        <!-- Header -->
+        <header class="akil-contact-header">
+            <h1 class="akil-contact-title">Get In Touch</h1>
+            <p class="akil-contact-subtitle">Let's create something amazing together</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="akil-contact-content">
+            <!-- Contact Form -->
+            <div class="akil-contact-form">
+                <h2 class="akil-contact-form-title">Send a Message</h2>
+                <form id="akilContactForm" action="#" method="POST">
+                    <div class="akil-contact-form-group">
+                        <input type="text" class="akil-contact-form-input" id="akilContactName" name="name" placeholder=" " required>
+                        <label class="akil-contact-form-label" for="akilContactName">Your Name</label>
+                    </div>
+                    
+                    <div class="akil-contact-form-group">
+                        <input type="email" class="akil-contact-form-input" id="akilContactEmail" name="email" placeholder=" " required>
+                        <label class="akil-contact-form-label" for="akilContactEmail">Email Address</label>
+                    </div>
+                    
+                    <div class="akil-contact-form-group">
+                        <input type="text" class="akil-contact-form-input" id="akilContactSubject" name="subject" placeholder=" " required>
+                        <label class="akil-contact-form-label" for="akilContactSubject">Subject</label>
+                    </div>
+                    
+                    <div class="akil-contact-form-group">
+                        <textarea class="akil-contact-form-textarea" id="akilContactMessage" name="message" placeholder=" " required></textarea>
+                        <label class="akil-contact-form-label" for="akilContactMessage">Your Message</label>
+                    </div>
+                    
+                    <button type="submit" class="akil-contact-form-button">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="akil-contact-info">
+                <h2 class="akil-contact-info-title">Contact Information</h2>
+                
+                <div class="akil-contact-info-item">
+                    <div class="akil-contact-info-content">
+                        <div class="akil-contact-info-label">Email</div>
+                        <div class="akil-contact-info-value">
+                            <a href="mailto:akilthangavel@gmail.com">akilthangavel@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="akil-contact-info-item">
+                    <div class="akil-contact-info-content">
+                        <div class="akil-contact-info-label">Phone</div>
+                        <div class="akil-contact-info-value">
+                            <a href="tel:+919488223505">+91 9488223505</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="akil-contact-info-item">
+                    <div class="akil-contact-info-content">
+                        <div class="akil-contact-info-label">Website</div>
+                        <div class="akil-contact-info-value">
+                            <a href="https://www.algosync.org" target="_blank">www.algosync.org</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="akil-contact-info-item">
+                    <div class="akil-contact-info-content">
+                        <div class="akil-contact-info-label">LinkedIn</div>
+                        <div class="akil-contact-info-value">
+                            <a href="https://linkedin.com/in/akilthangavel" target="_blank">linkedin.com/in/akilthangavel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Akil Contact Form submission handling
+        document.getElementById('akilContactForm').addEventListener('submit', function(akilContactEvent) {
+            akilContactEvent.preventDefault();
+            
+            const akilContactButton = this.querySelector('.akil-contact-form-button');
+            const akilContactOriginalText = akilContactButton.textContent;
+            
+            akilContactButton.textContent = 'Sending...';
+            akilContactButton.style.background = '#666';
+            
+            // Simulate form submission (replace with actual form handling)
+            setTimeout(() => {
+                akilContactButton.textContent = 'Message Sent!';
+                akilContactButton.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    akilContactButton.textContent = akilContactOriginalText;
+                    akilContactButton.style.background = '';
+                    this.reset();
+                }, 2000);
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>
