@@ -273,452 +273,6 @@ section {
     }
 }
 
-/* ========================================
-   AWARDS & CERTIFICATES SECTION (NEWSPAPER STYLE)
-======================================== */
-
-.akil-news-container {
-    width: 100%;
-    margin: 0;
-    background: #ffffff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    min-height: 100vh;
-}
-
-.akil-news-header {
-    border-bottom: 4px solid #000;
-    padding: 40px 3% 30px;
-    background: #fff;
-    position: relative;
-}
-
-.akil-news-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 8px;
-    background: repeating-linear-gradient(90deg,
-            #000 0px,
-            #000 2px,
-            #fff 2px,
-            #fff 8px);
-}
-
-.akil-news-masthead {
-    text-align: center;
-    border-bottom: 2px solid #000;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-}
-
-.akil-news-title {
-    font-family: 'Old Standard TT', serif;
-    font-size: 4rem;
-    font-weight: 700;
-    color: #000;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-.akil-news-subtitle {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-style: italic;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.akil-news-publication-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.akil-news-date-info,
-.akil-news-edition-info {
-    font-weight: 600;
-}
-
-.akil-news-content {
-    padding: 40px 3%;
-}
-
-.akil-news-headline-section {
-    text-align: center;
-    margin-bottom: 50px;
-    padding-bottom: 30px;
-    border-bottom: 2px solid #000;
-}
-
-.akil-news-main-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    font-weight: 900;
-    color: #000;
-    line-height: 1.1;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.akil-news-headline-subtext {
-    font-size: 1.3rem;
-    color: #555;
-    font-style: italic;
-    margin-bottom: 20px;
-}
-
-.akil-news-byline {
-    font-size: 0.95rem;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
-    display: inline-block;
-}
-
-.akil-news-columns {
-    column-count: 4;
-    column-gap: 30px;
-    column-rule: 1px solid #ddd;
-    column-fill: balance;
-    text-align: justify;
-    margin-top: 40px;
-    line-height: 1.6;
-    text-rendering: optimizeLegibility;
-}
-
-.akil-news-article {
-    break-inside: avoid;
-    margin-bottom: 25px;
-    padding: 0;
-    border-bottom: 1px solid #eee;
-    page-break-inside: avoid;
-    orphans: 3;
-    widows: 3;
-    opacity: 1;
-    position: relative;
-}
-
-.akil-news-article-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #000;
-    margin-bottom: 8px;
-    line-height: 1.3;
-    text-align: left;
-    hyphens: auto;
-    word-wrap: break-word;
-}
-
-.akil-news-article-category {
-    font-size: 0.8rem;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 12px;
-    font-weight: 600;
-    text-align: left;
-}
-
-.akil-news-article-content {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: #333;
-    text-align: justify;
-    hyphens: auto;
-    word-spacing: -0.05em;
-    margin-bottom: 12px;
-}
-
-.akil-news-article-date {
-    font-size: 0.8rem;
-    color: #999;
-    margin-top: 12px;
-    margin-bottom: 15px;
-    font-style: italic;
-    text-align: left;
-}
-
-/* Featured boxes and special elements */
-.akil-news-featured-box {
-    border: 3px solid #000;
-    padding: 20px;
-    margin: 25px 0;
-    background: #f9f9f9;
-    break-inside: avoid;
-    box-sizing: border-box;
-    text-align: left;
-}
-
-.akil-news-featured-box .akil-news-article-headline {
-    font-size: 1.6rem;
-    text-align: center;
-    margin-bottom: 15px;
-    line-height: 1.2;
-}
-
-.akil-news-featured-box .akil-news-article-content {
-    text-align: justify;
-    margin-bottom: 10px;
-}
-
-.akil-news-stats-box {
-    background: #000;
-    color: #fff;
-    padding: 20px;
-    margin: 25px 0;
-    text-align: center;
-    break-inside: avoid;
-    box-sizing: border-box;
-    page-break-inside: avoid;
-}
-
-.akil-news-stats-box h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.akil-news-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.akil-news-stat-item {
-    text-align: center;
-}
-
-.akil-news-stat-number {
-    font-family: 'Old Standard TT', serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.akil-news-stat-label {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Achievement List */
-.akil-news-achievement-list {
-    background: #f8f8f8;
-    border: 2px solid #000;
-    padding: 15px;
-    margin: 25px 0;
-    break-inside: avoid;
-    box-sizing: border-box;
-    page-break-inside: avoid;
-}
-
-.akil-news-achievement-list h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    text-align: center;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #000;
-}
-
-.akil-news-achievement-item {
-    display: flex;
-    align-items: flex-start;
-    padding: 6px 0;
-    border-bottom: 1px dotted #ccc;
-    text-align: left;
-}
-
-.akil-news-achievement-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-}
-
-.akil-news-achievement-number {
-    font-family: 'Old Standard TT', serif;
-    font-weight: 700;
-    font-size: 1rem;
-    width: 25px;
-    text-align: left;
-    margin-right: 10px;
-    flex-shrink: 0;
-}
-
-.akil-news-achievement-name {
-    flex: 1;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    margin-right: 8px;
-}
-
-.akil-news-achievement-year {
-    font-size: 0.8rem;
-    color: #666;
-    font-style: italic;
-    flex-shrink: 0;
-}
-
-/* Advertisement Style Boxes */
-.akil-news-ad-box {
-    border: 2px solid #000;
-    padding: 15px;
-    text-align: center;
-    margin: 25px 0;
-    background: #fff;
-    break-inside: avoid;
-    box-sizing: border-box;
-}
-
-.akil-news-ad-box h4 {
-    font-family: 'Old Standard TT', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-
-.akil-news-ad-box p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
-/* Newspaper Images */
-.akil-news-image {
-    width: 100%;
-    height: auto;
-    border: 2px solid #000;
-    margin: 15px 0;
-    break-inside: avoid;
-}
-
-.akil-news-image-small {
-    max-width: 180px;
-    float: left;
-    margin: 0 12px 12px 0;
-    clear: none;
-}
-
-.akil-news-image-medium {
-    max-width: 100%;
-    margin: 15px 0;
-    display: block;
-}
-
-.akil-news-image-large {
-    width: 100%;
-    margin: 20px 0;
-    display: block;
-    clear: both;
-}
-
-.akil-news-image-caption {
-    font-size: 0.8rem;
-    color: #666;
-    font-style: italic;
-    text-align: left;
-    margin-top: 5px;
-    padding: 6px;
-    background: #f5f5f5;
-    border: 1px solid #ddd;
-    line-height: 1.3;
-    clear: both;
-}
-
-.akil-news-image-credit {
-    font-size: 0.7rem;
-    color: #999;
-    text-align: right;
-    margin-top: 2px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.akil-news-photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin: 20px 0;
-    break-inside: avoid;
-}
-
-.akil-news-gallery-item {
-    position: relative;
-}
-
-.akil-news-gallery-item img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border: 1px solid #000;
-}
-
-.akil-news-gallery-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 5px 8px;
-    font-size: 0.7rem;
-    line-height: 1.2;
-}
-
-.akil-news-portrait-frame {
-    width: 100px;
-    height: 125px;
-    border: 3px solid #000;
-    float: right;
-    margin: 0 0 12px 12px;
-    background: #f0f0f0;
-    position: relative;
-    break-inside: avoid;
-    clear: none;
-}
-
-.akil-news-portrait-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.akil-news-portrait-frame::after {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    border: 1px solid #666;
-}
-
-/* Global image grayscale effect for all images in awards section */
-.akil-news-container img {
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
-}
-
-.akil-news-container img:hover {
-    filter: grayscale(0%);
-}
 
 /* ========================================
    SEMINARS SECTION
@@ -1115,6 +669,52 @@ i:nth-child(9):hover { --akil-seminars-z: 9; }
 }
 
 /* ========================================
+   AWARDS & CERTIFICATES SECTION
+======================================== */
+
+/* Compact grid layout */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    justify-items: center;
+}
+
+/* Smaller certificate box */
+.cert-box {
+    border: 2px solid #000;
+    padding: 12px;
+    border-radius: 5px;
+    background: #fff;
+    width: 100%;
+    max-width: 180px;
+    min-height: 90px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.cert-box:hover {
+    transform: scale(1.05);
+}
+
+.cert-box h3 {
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cert-box p {
+    margin: 6px 0 0;
+    font-size: 12px;
+    text-align: center;
+    color: #444;
+}
+
+/* ========================================
    PROJECTS & BLOG SECTIONS
 ======================================== */
 
@@ -1203,50 +803,6 @@ footer {
     background: #f5f5f5;
 }
 
-/* ========================================
-   LEGACY TECH SECTION (DEPRECATED)
-======================================== */
-
-.tech-container {
-    margin-top: 20px;
-}
-
-.tech-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.tech-category h4 {
-    font-size: 1.2em;
-    margin-bottom: 15px;
-    color: #333;
-    font-weight: 600;
-}
-
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.tech-tag {
-    background: #f5f5f5;
-    color: #333;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.9em;
-    font-weight: 500;
-    border: 1px solid #e0e0e0;
-    transition: all 0.3s ease;
-}
-
-.tech-tag:hover {
-    background: #333;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
 
 /* ========================================
    ACCESSIBILITY & FOCUS STATES
@@ -1290,85 +846,26 @@ footer {
     }
 }
 
-/* News (Awards) Section Responsive */
-@media (max-width: 1600px) {
-    .akil-news-columns {
-        column-count: 4;
-        column-gap: 25px;
-    }
-}
-
-@media (max-width: 1400px) {
-    .akil-news-columns {
-        column-count: 3;
-        column-gap: 25px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .akil-news-title {
-        font-size: 3rem;
-    }
-
-    .akil-news-main-headline {
-        font-size: 2.8rem;
-    }
-
-    .akil-news-columns {
-        column-count: 2;
-        column-gap: 25px;
-    }
-
-    .akil-news-header,
-    .akil-news-content {
-        padding: 30px 2%;
-    }
-}
 
 @media (max-width: 768px) {
-    .akil-news-header,
-    .akil-news-content {
-        padding: 30px 4%;
+    /* Certificate section responsive */
+    .cert-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
     }
 
-    .akil-news-title {
-        font-size: 2.5rem;
+    .cert-box {
+        max-width: none;
+        min-height: 80px;
+        padding: 10px;
     }
 
-    .akil-news-main-headline {
-        font-size: 2.2rem;
+    .cert-box h3 {
+        font-size: 13px;
     }
 
-    .akil-news-columns {
-        column-count: 1;
-        column-gap: 0;
-        column-rule: none;
-    }
-
-    .akil-news-publication-info {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .akil-news-image-small,
-    .akil-news-portrait-frame {
-        float: none;
-        display: block;
-        margin: 15px auto;
-        max-width: 250px;
-    }
-
-    .akil-news-photo-gallery {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    .akil-news-image-medium {
-        max-width: 100%;
-    }
-
-    .akil-news-image-large {
-        margin: 15px 0;
+    .cert-box p {
+        font-size: 11px;
     }
 
     /* Footer responsive */
@@ -1376,46 +873,8 @@ footer {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-
-    /* Tech section responsive */
-    .tech-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
 }
 
-@media (max-width: 480px) {
-    .akil-news-header,
-    .akil-news-content {
-        padding: 20px 5%;
-    }
-
-    .akil-news-title {
-        font-size: 2rem;
-        letter-spacing: 1px;
-    }
-
-    .akil-news-main-headline {
-        font-size: 1.8rem;
-    }
-
-    .akil-news-stats-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .akil-news-portrait-frame {
-        width: 100px;
-        height: 125px;
-    }
-
-    .akil-news-photo-gallery {
-        gap: 8px;
-    }
-
-    .akil-news-gallery-item img {
-        height: 120px;
-    }
-}
 
 /* Contact Section Responsive */
 @media (max-width: 768px) {
@@ -1438,6 +897,25 @@ footer {
 }
 
 @media (max-width: 480px) {
+    /* Certificate section - mobile */
+    .cert-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+    }
+
+    .cert-box {
+        min-height: 70px;
+        padding: 8px;
+    }
+
+    .cert-box h3 {
+        font-size: 12px;
+    }
+
+    .cert-box p {
+        font-size: 10px;
+    }
+
     .akil-contact-container {
         padding: 20px 15px;
     }
@@ -1463,20 +941,5 @@ footer {
 @media print {
     body {
         background: white;
-    }
-
-    .akil-news-container {
-        box-shadow: none;
-        width: 100%;
-    }
-
-    .akil-news-columns {
-        column-count: 4;
-        column-gap: 20px;
-    }
-
-    .akil-news-header,
-    .akil-news-content {
-        padding: 20px 1%;
     }
 }
