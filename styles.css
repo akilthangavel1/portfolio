@@ -13,8 +13,6 @@ body {
     line-height: 1.6;
     color: #333;
     background: white;
-    margin: 0;
-    padding: 0;
 }
 
 /* ========================================
@@ -36,15 +34,37 @@ body {
     --akil-seminars-hover-smoothness: 70ms;
     --akil-seminars-fall-smoothness: 250ms;
     --akil-seminars-perspective: 2000px;
+}
 
-    /* Contact Section Variables */
-    --akil-contact-primary-color: #000;
-    --akil-contact-secondary-color: #333;
-    --akil-contact-tertiary-color: #666;
-    --akil-contact-light-gray: #f5f5f5;
-    --akil-contact-border-color: #eee;
-    --akil-contact-white: #fff;
-    --akil-contact-subtle-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* ========================================
+   LAYOUT & TYPOGRAPHY
+======================================== */
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.2em;
+}
+
+section {
+    margin-bottom: 40px;
 }
 
 /* ========================================
@@ -96,41 +116,14 @@ nav {
 }
 
 /* ========================================
-   LAYOUT & TYPOGRAPHY
+   HERO SECTION
 ======================================== */
-
-.container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
-}
 
 header {
     text-align: center;
     margin-bottom: 40px;
     padding: 40px 0;
     border-bottom: 1px solid #eee;
-}
-
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-h2 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #333;
-    padding-bottom: 5px;
-}
-
-.subtitle {
-    color: #666;
-    font-size: 1.2em;
-}
-
-section {
-    margin-bottom: 40px;
 }
 
 /* ========================================
@@ -273,447 +266,6 @@ section {
     }
 }
 
-
-/* ========================================
-   SEMINARS SECTION
-======================================== */
-
-.akil-seminars-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Manrope", sans-serif;
-    background: var(--akil-seminars-clr-bg);
-    color: var(--akil-seminars-clr-text);
-    overflow: hidden;
-    padding: 1em;
-}
-
-.akil-seminars-nav {
-    --akil-seminars-r: calc(var(--akil-seminars-max-z) * (var(--akil-seminars-p) - 1) + var(--akil-seminars-z));
-    --akil-seminars-r-n: calc((var(--akil-seminars-r) - 1) / (var(--akil-seminars-max-z) * var(--akil-seminars-max-p) - 1));
-    height: 400px;
-    width: min(1400px, 95%);
-    display: flex;
-    align-items: flex-end;
-    position: relative;
-    perspective: var(--akil-seminars-perspective);
-    transform-style: preserve-3d;
-    --akil-seminars-dir: 0deg;
-}
-
-.akil-seminars-link {
-    flex: 1;
-    block-size: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: inherit;
-    font-size: 1rem;
-    cursor: pointer;
-    transform-style: preserve-3d;
-    --akil-seminars-ts: calc(var(--akil-seminars-hover-smoothness) * var(--akil-seminars-falloff) + var(--akil-seminars-fall-smoothness) * (1 - var(--akil-seminars-falloff)));
-    --akil-seminars-fs: calc(.1s * var(--akil-seminars-falloff, 0) + .8s * (1 - var(--akil-seminars-falloff, 0)));
-    transition:
-        scale var(--akil-seminars-op, .15s),
-        filter var(--akil-seminars-fs),
-        transform var(--akil-seminars-ts, var(--akil-seminars-fall-smoothness)),
-        flex .3s;
-    --akil-seminars-p-n: calc(var(--akil-seminars-i) / (var(--akil-seminars-max-p) - 1));
-    --akil-seminars-diff: calc(var(--akil-seminars-p-n) - var(--akil-seminars-r-n));
-    --akil-seminars-u: calc(abs(var(--akil-seminars-diff)) / var(--akil-seminars-w));
-    --akil-seminars-w: .4;
-    --akil-seminars-falloff: clamp(calc(0.5 * (1 + cos(min(var(--akil-seminars-u), 1) * 180deg))), 0, 1);
-    --akil-seminars-tilt: calc(clamp(-1, var(--akil-seminars-diff) * 5, 1) * var(--akil-seminars-falloff) * 70deg);
-    transform:
-        translateZ(calc(var(--akil-seminars-falloff) * var(--akil-seminars-hover-intensity))) 
-        rotateY(calc(var(--akil-seminars-tilt) * cos(var(--akil-seminars-dir)))) 
-        rotateX(calc(var(--akil-seminars-tilt) * sin(var(--akil-seminars-dir))));
-    filter:
-        brightness(max(.5, var(--akil-seminars-falloff, 0) * 1.2)) 
-        saturate(var(--akil-seminars-falloff, 0));
-}
-
-.akil-seminars-img {
-    background: var(--akil-seminars-img);
-    background-color: #ddd;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    margin-inline: 0.1em;
-    min-height: 150px;
-}
-
-.akil-seminars-hover-zone {
-    position: absolute;
-    inset: 0;
-    inset-inline: -3px;
-    display: flex;
-    z-index: 999;
-}
-
-.akil-seminars-hover-zone > i {
-    flex: 1;
-    transition: .3s;
-}
-
-.akil-seminars-hover-zone::after {
-    position: absolute;
-    inset: 0;
-}
-
-.akil-seminars-hover-zone:active::after,
-.akil-seminars-hover-zone:hover:not(:has(> i:hover))::after,
-.akil-seminars-link:focus-visible .akil-seminars-hover-zone::after {
-    content: '';
-    pointer-events: all;
-    --akil-seminars-o: 1;
-}
-
-.akil-seminars-nav:has(.akil-seminars-hover-zone:hover):not(:has(i:hover)),
-.akil-seminars-nav:has(.akil-seminars-link:focus-visible) {
-    --akil-seminars-z: calc((var(--akil-seminars-max-z) + 1) / 2);
-}
-
-.akil-seminars-nav:has(.akil-seminars-hover-zone:hover) .akil-seminars-link:hover,
-.akil-seminars-nav:has(.akil-seminars-link:focus-visible) .akil-seminars-link:focus-visible {
-    flex: 8;
-}
-
-/* Seminars link positioning */
-.akil-seminars-link:nth-child(1):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(1):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 1;
-}
-
-.akil-seminars-link:nth-child(2):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(2):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 2;
-}
-
-.akil-seminars-link:nth-child(3):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(3):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 3;
-}
-
-.akil-seminars-link:nth-child(4):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(4):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 4;
-}
-
-.akil-seminars-link:nth-child(5):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(5):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 5;
-}
-
-.akil-seminars-link:nth-child(6):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(6):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 6;
-}
-
-.akil-seminars-link:nth-child(7):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(7):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 7;
-}
-
-.akil-seminars-link:nth-child(8):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(8):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 8;
-}
-
-.akil-seminars-link:nth-child(9):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(9):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 9;
-}
-
-.akil-seminars-link:nth-child(10):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(10):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 10;
-}
-
-.akil-seminars-link:nth-child(11):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(11):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 11;
-}
-
-.akil-seminars-link:nth-child(12):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(12):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 12;
-}
-
-.akil-seminars-link:nth-child(13):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(13):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 13;
-}
-
-.akil-seminars-link:nth-child(14):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(14):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 14;
-}
-
-.akil-seminars-link:nth-child(15):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(15):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 15;
-}
-
-.akil-seminars-link:nth-child(16):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(16):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 16;
-}
-
-.akil-seminars-link:nth-child(17):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(17):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 17;
-}
-
-.akil-seminars-link:nth-child(18):is(:hover, :focus-visible) ~ .akil-seminars-nav,
-.akil-seminars-nav:has(.akil-seminars-link:nth-child(18):is(:hover, :focus-visible)) {
-    --akil-seminars-p: 18;
-}
-
-i:nth-child(1):hover { --akil-seminars-z: 1; }
-i:nth-child(2):hover { --akil-seminars-z: 2; }
-i:nth-child(3):hover { --akil-seminars-z: 3; }
-i:nth-child(4):hover { --akil-seminars-z: 4; }
-i:nth-child(5):hover { --akil-seminars-z: 5; }
-i:nth-child(6):hover { --akil-seminars-z: 6; }
-i:nth-child(7):hover { --akil-seminars-z: 7; }
-i:nth-child(8):hover { --akil-seminars-z: 8; }
-i:nth-child(9):hover { --akil-seminars-z: 9; }
-
-/* ========================================
-   CONTACT US SECTION
-======================================== */
-
-.akil-contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    min-height: 100vh;
-}
-
-.akil-contact-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.akil-contact-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 300;
-    color: var(--akil-contact-primary-color);
-    margin-bottom: 20px;
-    letter-spacing: -1px;
-    position: relative;
-}
-
-.akil-contact-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: var(--akil-contact-primary-color);
-}
-
-.akil-contact-subtitle {
-    font-size: 1.2rem;
-    color: var(--akil-contact-tertiary-color);
-    font-style: italic;
-    margin-top: 30px;
-}
-
-.akil-contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    margin-bottom: 60px;
-}
-
-.akil-contact-form {
-    background: var(--akil-contact-white);
-    padding: 40px;
-    border: 1px solid var(--akil-contact-border-color);
-}
-
-.akil-contact-form:hover {
-    box-shadow: var(--akil-contact-subtle-shadow);
-}
-
-.akil-contact-form-title {
-    font-size: 1.8rem;
-    color: var(--akil-contact-primary-color);
-    margin-bottom: 30px;
-    text-align: center;
-    font-weight: 400;
-}
-
-.akil-contact-form-group {
-    margin-bottom: 25px;
-    position: relative;
-}
-
-.akil-contact-form-input,
-.akil-contact-form-textarea {
-    width: 100%;
-    padding: 15px 0;
-    border: none;
-    border-bottom: 2px solid var(--akil-contact-border-color);
-    background: transparent;
-    font-size: 1rem;
-    font-family: inherit;
-    color: var(--akil-contact-secondary-color);
-    outline: none;
-}
-
-.akil-contact-form-input:not(:placeholder-shown) + .akil-contact-form-label,
-.akil-contact-form-textarea:not(:placeholder-shown) + .akil-contact-form-label {
-    font-size: 0.9rem;
-    color: var(--akil-contact-primary-color);
-}
-
-.akil-contact-form-label {
-    position: absolute;
-    top: 15px;
-    left: 0;
-    font-size: 1rem;
-    color: var(--akil-contact-tertiary-color);
-    pointer-events: none;
-}
-
-.akil-contact-form-textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.akil-contact-form-button {
-    width: 100%;
-    padding: 15px;
-    background: var(--akil-contact-primary-color);
-    color: var(--akil-contact-white);
-    border: none;
-    font-size: 1rem;
-    font-family: inherit;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 500;
-}
-
-.akil-contact-form-button:hover {
-    background: var(--akil-contact-secondary-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.akil-contact-info-title {
-    font-size: 1.8rem;
-    color: var(--akil-contact-primary-color);
-    margin-bottom: 30px;
-    text-align: center;
-    font-weight: 400;
-}
-
-.akil-contact-info-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 25px;
-    padding: 20px;
-    border: 1px solid var(--akil-contact-border-color);
-    position: relative;
-}
-
-.akil-contact-info-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--akil-contact-light-gray);
-    z-index: -1;
-}
-
-.akil-contact-info-item:hover {
-    border-color: var(--akil-contact-primary-color);
-}
-
-.akil-contact-info-content {
-    flex: 1;
-}
-
-.akil-contact-info-label {
-    font-size: 0.9rem;
-    color: var(--akil-contact-tertiary-color);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-}
-
-.akil-contact-info-value {
-    font-size: 1.1rem;
-    color: var(--akil-contact-secondary-color);
-    font-weight: 500;
-}
-
-.akil-contact-info-value a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.akil-contact-info-value a:hover {
-    color: var(--akil-contact-primary-color);
-}
-
-/* ========================================
-   AWARDS & CERTIFICATES SECTION
-======================================== */
-
-/* Compact grid layout */
-.cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 15px;
-    justify-items: center;
-}
-
-/* Smaller certificate box */
-.cert-box {
-    border: 2px solid #000;
-    padding: 12px;
-    border-radius: 5px;
-    background: #fff;
-    width: 100%;
-    max-width: 180px;
-    min-height: 90px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: transform 0.2s;
-}
-
-.cert-box:hover {
-    transform: scale(1.05);
-}
-
-.cert-box h3 {
-    margin: 0;
-    font-size: 14px;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.cert-box p {
-    margin: 6px 0 0;
-    font-size: 12px;
-    text-align: center;
-    color: #444;
-}
-
 /* ========================================
    PROJECTS SECTION
 ======================================== */
@@ -805,6 +357,283 @@ i:nth-child(9):hover { --akil-seminars-z: 9; }
 }
 
 /* ========================================
+   AWARDS & CERTIFICATES SECTION
+======================================== */
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    justify-items: center;
+}
+
+.cert-box {
+    border: 2px solid #000;
+    padding: 12px;
+    border-radius: 5px;
+    background: #fff;
+    width: 100%;
+    max-width: 180px;
+    min-height: 90px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.cert-box:hover {
+    transform: scale(1.05);
+}
+
+.cert-box h3 {
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cert-box p {
+    margin: 6px 0 0;
+    font-size: 12px;
+    text-align: center;
+    color: #444;
+}
+
+/* ========================================
+   SEMINARS SECTION
+======================================== */
+
+.akil-seminars-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Manrope", sans-serif;
+    background: var(--akil-seminars-clr-bg);
+    color: var(--akil-seminars-clr-text);
+    overflow: hidden;
+    padding: 1em;
+}
+
+.akil-seminars-nav {
+    --akil-seminars-r: calc(var(--akil-seminars-max-z) * (var(--akil-seminars-p) - 1) + var(--akil-seminars-z));
+    --akil-seminars-r-n: calc((var(--akil-seminars-r) - 1) / (var(--akil-seminars-max-z) * var(--akil-seminars-max-p) - 1));
+    height: 400px;
+    width: min(1400px, 95%);
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    perspective: var(--akil-seminars-perspective);
+    transform-style: preserve-3d;
+    --akil-seminars-dir: 0deg;
+}
+
+.akil-seminars-link {
+    flex: 1;
+    block-size: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    --akil-seminars-ts: calc(var(--akil-seminars-hover-smoothness) * var(--akil-seminars-falloff) + var(--akil-seminars-fall-smoothness) * (1 - var(--akil-seminars-falloff)));
+    --akil-seminars-fs: calc(.1s * var(--akil-seminars-falloff, 0) + .8s * (1 - var(--akil-seminars-falloff, 0)));
+    transition:
+        scale var(--akil-seminars-op, .15s),
+        filter var(--akil-seminars-fs),
+        transform var(--akil-seminars-ts, var(--akil-seminars-fall-smoothness)),
+        flex .3s;
+    --akil-seminars-p-n: calc(var(--akil-seminars-i) / (var(--akil-seminars-max-p) - 1));
+    --akil-seminars-diff: calc(var(--akil-seminars-p-n) - var(--akil-seminars-r-n));
+    --akil-seminars-u: calc(abs(var(--akil-seminars-diff)) / var(--akil-seminars-w));
+    --akil-seminars-w: .4;
+    --akil-seminars-falloff: clamp(calc(0.5 * (1 + cos(min(var(--akil-seminars-u), 1) * 180deg))), 0, 1);
+    --akil-seminars-tilt: calc(clamp(-1, var(--akil-seminars-diff) * 5, 1) * var(--akil-seminars-falloff) * 70deg);
+    transform:
+        translateZ(calc(var(--akil-seminars-falloff) * var(--akil-seminars-hover-intensity))) rotateY(calc(var(--akil-seminars-tilt) * cos(var(--akil-seminars-dir)))) rotateX(calc(var(--akil-seminars-tilt) * sin(var(--akil-seminars-dir))));
+    filter:
+        brightness(max(.5, var(--akil-seminars-falloff, 0) * 1.2)) saturate(var(--akil-seminars-falloff, 0));
+}
+
+.akil-seminars-img {
+    background: var(--akil-seminars-img);
+    background-color: #ddd;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    margin-inline: 0.1em;
+    min-height: 150px;
+}
+
+.akil-seminars-hover-zone {
+    position: absolute;
+    inset: 0;
+    inset-inline: -3px;
+    display: flex;
+    z-index: 999;
+}
+
+.akil-seminars-hover-zone>i {
+    flex: 1;
+    transition: .3s;
+}
+
+.akil-seminars-hover-zone::after {
+    position: absolute;
+    inset: 0;
+}
+
+.akil-seminars-hover-zone:active::after,
+.akil-seminars-hover-zone:hover:not(:has(> i:hover))::after,
+.akil-seminars-link:focus-visible .akil-seminars-hover-zone::after {
+    content: '';
+    pointer-events: all;
+    --akil-seminars-o: 1;
+}
+
+.akil-seminars-nav:has(.akil-seminars-hover-zone:hover):not(:has(i:hover)),
+.akil-seminars-nav:has(.akil-seminars-link:focus-visible) {
+    --akil-seminars-z: calc((var(--akil-seminars-max-z) + 1) / 2);
+}
+
+.akil-seminars-nav:has(.akil-seminars-hover-zone:hover) .akil-seminars-link:hover,
+.akil-seminars-nav:has(.akil-seminars-link:focus-visible) .akil-seminars-link:focus-visible {
+    flex: 8;
+}
+
+/* Seminars link positioning */
+.akil-seminars-link:nth-child(1):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(1):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 1;
+}
+
+.akil-seminars-link:nth-child(2):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(2):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 2;
+}
+
+.akil-seminars-link:nth-child(3):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(3):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 3;
+}
+
+.akil-seminars-link:nth-child(4):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(4):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 4;
+}
+
+.akil-seminars-link:nth-child(5):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(5):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 5;
+}
+
+.akil-seminars-link:nth-child(6):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(6):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 6;
+}
+
+.akil-seminars-link:nth-child(7):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(7):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 7;
+}
+
+.akil-seminars-link:nth-child(8):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(8):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 8;
+}
+
+.akil-seminars-link:nth-child(9):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(9):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 9;
+}
+
+.akil-seminars-link:nth-child(10):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(10):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 10;
+}
+
+.akil-seminars-link:nth-child(11):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(11):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 11;
+}
+
+.akil-seminars-link:nth-child(12):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(12):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 12;
+}
+
+.akil-seminars-link:nth-child(13):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(13):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 13;
+}
+
+.akil-seminars-link:nth-child(14):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(14):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 14;
+}
+
+.akil-seminars-link:nth-child(15):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(15):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 15;
+}
+
+.akil-seminars-link:nth-child(16):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(16):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 16;
+}
+
+.akil-seminars-link:nth-child(17):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(17):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 17;
+}
+
+.akil-seminars-link:nth-child(18):is(:hover, :focus-visible)~.akil-seminars-nav,
+.akil-seminars-nav:has(.akil-seminars-link:nth-child(18):is(:hover, :focus-visible)) {
+    --akil-seminars-p: 18;
+}
+
+i:nth-child(1):hover {
+    --akil-seminars-z: 1;
+}
+
+i:nth-child(2):hover {
+    --akil-seminars-z: 2;
+}
+
+i:nth-child(3):hover {
+    --akil-seminars-z: 3;
+}
+
+i:nth-child(4):hover {
+    --akil-seminars-z: 4;
+}
+
+i:nth-child(5):hover {
+    --akil-seminars-z: 5;
+}
+
+i:nth-child(6):hover {
+    --akil-seminars-z: 6;
+}
+
+i:nth-child(7):hover {
+    --akil-seminars-z: 7;
+}
+
+i:nth-child(8):hover {
+    --akil-seminars-z: 8;
+}
+
+i:nth-child(9):hover {
+    --akil-seminars-z: 9;
+}
+
+/* ========================================
    BLOG SECTION
 ======================================== */
 
@@ -833,6 +662,198 @@ i:nth-child(9):hover { --akil-seminars-z: 9; }
 }
 
 /* ========================================
+   SOCIAL LINKS SECTION
+======================================== */
+
+.psi-social-section {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.psi-social-section h2 {
+    align-self: flex-start;
+    width: 100%;
+}
+
+.psi-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px auto 30px auto;
+    border: 4px solid white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: block;
+}
+
+.psi-social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1em;
+    color: #bbb;
+    margin-top: 20px;
+}
+
+.psi-social-links a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.psi-social-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    height: 40px;
+    opacity: 1;
+    position: relative;
+    transform: scale(1);
+    transition: box-shadow 0.3s ease;
+}
+
+.psi-social-button:hover {
+    transition: box-shadow 300ms ease;
+}
+
+.psi-social-button:hover .psi-social-button-icon i {
+    transform: rotateY(360deg);
+}
+
+/* Individual shadow colors for each platform */
+.psi-linkedin:hover {
+    box-shadow: -3px 3px 10px rgba(0, 119, 181, 0.3);
+}
+
+.psi-instagram:hover {
+    box-shadow: -3px 3px 10px rgba(189, 8, 28, 0.3);
+}
+
+.psi-whatsapp:hover {
+    box-shadow: -3px 3px 10px rgba(37, 211, 102, 0.3);
+}
+
+.psi-gmail:hover {
+    box-shadow: -3px 3px 10px rgba(255, 102, 0, 0.3);
+}
+
+.psi-telegram:hover {
+    box-shadow: -3px 3px 10px rgba(0, 136, 204, 0.3);
+}
+
+.psi-social-button-icon {
+    background-color: #2c2c2c;
+    color: white;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    position: relative;
+    border-radius: 8px 0 0 8px;
+    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    transition: all 300ms ease;
+}
+
+.psi-social-button-icon i {
+    transition: all 300ms ease;
+}
+
+.psi-social-button-text {
+    padding: 8px 16px;
+    color: white;
+    font-weight: 500;
+    font-size: 0.85em;
+    position: relative;
+    border-radius: 0 8px 8px 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    margin-left: -6px;
+    padding-left: 14px;
+    width: 90px;
+    min-width: 90px;
+    max-width: 90px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    justify-content: center;
+    transition: filter 300ms ease;
+}
+
+.psi-social-button:hover .psi-social-button-text {
+    filter: brightness(1.1);
+}
+
+.psi-social-button-text::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid #2c2c2c;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+
+/* WhatsApp */
+.psi-whatsapp .psi-social-button-text {
+    background-color: #25d366;
+}
+
+.psi-whatsapp .psi-social-button-text::before {
+    border-right-color: #25d366;
+}
+
+/* Instagram */
+.psi-instagram .psi-social-button-text {
+    background-color: #bd081c;
+}
+
+.psi-instagram .psi-social-button-text::before {
+    border-right-color: #bd081c;
+}
+
+/* LinkedIn */
+.psi-linkedin .psi-social-button-text {
+    background-color: #0077b5;
+}
+
+.psi-linkedin .psi-social-button-text::before {
+    border-right-color: #0077b5;
+}
+
+/* Telegram */
+.psi-telegram .psi-social-button-text {
+    background-color: #0088cc;
+}
+
+.psi-telegram .psi-social-button-text::before {
+    border-right-color: #0088cc;
+}
+
+/* Gmail */
+.psi-gmail .psi-social-button-text {
+    background-color: #ff6600;
+}
+
+.psi-gmail .psi-social-button-text::before {
+    border-right-color: #ff6600;
+}
+
+/* ========================================
    FOOTER
 ======================================== */
 
@@ -844,31 +865,6 @@ footer {
     width: 100%;
 }
 
-.footer-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 30px;
-    padding: 0 20px;
-}
-
-.footer-section h4 {
-    margin-bottom: 15px;
-    color: #333;
-    font-size: 1em;
-}
-
-.footer-section p,
-.footer-section a {
-    color: #666;
-    text-decoration: none;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.footer-section a:hover {
-    color: #333;
-}
-
 .footer-bottom {
     text-align: center;
     padding: 20px 20px 0 20px;
@@ -877,32 +873,9 @@ footer {
     font-size: 0.9em;
 }
 
-/* Contact section styles */
-.contact {
-    text-align: center;
-}
-
-.contact a {
-    color: #333;
-    text-decoration: none;
-    margin: 0 10px;
-    border-bottom: 1px solid #333;
-}
-
-.contact a:hover {
-    background: #f5f5f5;
-}
-
-
 /* ========================================
    ACCESSIBILITY & FOCUS STATES
 ======================================== */
-
-.akil-contact-form-input:focus,
-.akil-contact-form-textarea:focus,
-.akil-contact-form-button:focus {
-    outline: none;
-}
 
 /* Accessibility: respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -926,18 +899,7 @@ footer {
     .nav-links {
         gap: 20px;
     }
-}
 
-/* Seminars Responsive */
-@media (max-width: 40rem) {
-    .akil-seminars-nav {
-        writing-mode: sideways-rl;
-        --akil-seminars-dir: -90deg;
-    }
-}
-
-
-@media (max-width: 768px) {
     /* Projects section responsive */
     .projects-grid {
         grid-template-columns: 1fr;
@@ -980,32 +942,13 @@ footer {
     .cert-box p {
         font-size: 11px;
     }
-
-    /* Footer responsive */
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
 }
 
-
-/* Contact Section Responsive */
-@media (max-width: 768px) {
-    .akil-contact-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .akil-contact-form {
-        padding: 30px 20px;
-    }
-
-    .akil-contact-title {
-        font-size: 2.5rem;
-    }
-
-    .akil-contact-info-item {
-        padding: 15px;
+/* Seminars Responsive */
+@media (max-width: 40rem) {
+    .akil-seminars-nav {
+        writing-mode: sideways-rl;
+        --akil-seminars-dir: -90deg;
     }
 }
 
@@ -1049,23 +992,6 @@ footer {
 
     .cert-box p {
         font-size: 10px;
-    }
-
-    .akil-contact-container {
-        padding: 20px 15px;
-    }
-
-    .akil-contact-form {
-        padding: 20px;
-    }
-
-    .akil-contact-form-title,
-    .akil-contact-info-title {
-        font-size: 1.5rem;
-    }
-
-    .akil-contact-title {
-        font-size: 2rem;
     }
 }
 

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portable Social Icons</title>
+
+  <!-- ==============================================
+       REQUIRED CDN LINKS - Copy these to your project
+       ============================================== -->
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ==============================================
+       PORTABLE SOCIAL ICONS - USAGE INSTRUCTIONS
+       
+       1. DEPENDENCIES:
+          - Font Awesome 6.4.0+ for icons
+       
+       2. TO USE IN YOUR PROJECT:
+          a) Copy the CSS section (marked with comments below)
+          b) Copy the HTML structure 
+          c) Copy the JavaScript section
+          d) Include Font Awesome CDN link
+       
+       3. CUSTOMIZATION:
+          - Modify platform colors in the CSS
+          - Add/remove social buttons in HTML
+       
+       ============================================== */
+
+    /* ==============================================
+       PORTABLE SOCIAL ICONS - CSS
+       All classes prefixed with "psi-" for uniqueness
+       Copy from here to the closing CSS comment
+       ============================================== */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f5f5;
+      min-height: 100vh;
+    }
+
+
+    /* Social Links Section */
+    .psi-social-section {
+      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* Avatar Image */
+    .psi-avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 75px;
+      border: 4px solid white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      display: block;
+    }
+
+    .psi-social-links {
+      text-align: center;
+      font-size: 1em;
+      color: #bbb;
+      overflow: visible;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+    }
+
+    .psi-social-links a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .psi-social-button {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      height: 40px;
+      opacity: 1;
+      position: relative;
+      transform: scale(1);
+      transition: box-shadow 0.3s ease;
+    }
+
+
+    .psi-social-button:hover {
+      transition: box-shadow 300ms ease;
+    }
+
+    .psi-social-button:hover .psi-social-button-icon i {
+      transform: rotateY(360deg);
+    }
+
+    /* Individual shadow colors for each platform */
+    .psi-linkedin:hover {
+      box-shadow: -3px 3px 10px rgba(0, 119, 181, 0.3);
+    }
+
+    .psi-instagram:hover {
+      box-shadow: -3px 3px 10px rgba(189, 8, 28, 0.3);
+    }
+
+    .psi-whatsapp:hover {
+      box-shadow: -3px 3px 10px rgba(37, 211, 102, 0.3);
+    }
+
+    .psi-gmail:hover {
+      box-shadow: -3px 3px 10px rgba(255, 102, 0, 0.3);
+    }
+
+    .psi-telegram:hover {
+      box-shadow: -3px 3px 10px rgba(0, 136, 204, 0.3);
+    }
+
+    /* General button styles */
+    .psi-social-button-icon {
+      background-color: #2c2c2c;
+      color: white;
+      padding: 4px 8px;
+      /* Reduced from 8px 12px */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1em;
+      position: relative;
+      border-radius: 8px 0 0 8px;
+      width: 40px;
+      /* Reduced from 50px to maintain proportions */
+      min-width: 40px;
+      /* Reduced from 50px */
+      max-width: 40px;
+      /* Reduced from 50px */
+      height: 40px;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      transition: all 300ms ease;
+    }
+
+    .psi-social-button-icon i {
+      transition: all 300ms ease;
+    }
+
+    .psi-social-button-text {
+      padding: 8px 16px;
+      /* Reduced horizontal padding from 16px to 12px */
+      color: white;
+      font-weight: 500;
+      font-size: 0.85em;
+      position: relative;
+      border-radius: 0 8px 8px 0;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      margin-left: -6px;
+      padding-left: 14px;
+      /* Reduced from 14px to 12px */
+      width: 90px;
+      /* Reduced from 100px to 80px */
+      min-width: 90px;
+      /* Reduced from 100px to 80px */
+      max-width: 90px;
+      /* Reduced from 100px to 80px */
+      flex-shrink: 0;
+      box-sizing: border-box;
+      justify-content: center;
+      transition: filter 300ms ease;
+    }
+
+    .psi-social-button:hover .psi-social-button-text {
+      filter: brightness(1.1);
+    }
+
+    .psi-social-button-text::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 6px solid #2c2c2c;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+    }
+
+    /* Fiverr */
+    .psi-fiverr .psi-social-button-text {
+      background-color: #1dbf73;
+    }
+
+    .psi-fiverr .psi-social-button-text::before {
+      border-right-color: #1dbf73;
+    }
+
+    /* Twitter */
+    .psi-twitter .psi-social-button-text {
+      background-color: #1da1f2;
+    }
+
+    .psi-twitter .psi-social-button-text::before {
+      border-right-color: #1da1f2;
+    }
+
+    /* WhatsApp */
+    .psi-whatsapp .psi-social-button-text {
+      background-color: #25d366;
+    }
+
+    .psi-whatsapp .psi-social-button-text::before {
+      border-right-color: #25d366;
+    }
+
+    /* Instagram */
+    .psi-instagram .psi-social-button-text {
+      background-color: #bd081c;
+    }
+
+    .psi-instagram .psi-social-button-text::before {
+      border-right-color: #bd081c;
+    }
+
+    /* LinkedIn */
+    .psi-linkedin .psi-social-button-text {
+      background-color: #0077b5;
+    }
+
+    .psi-linkedin .psi-social-button-text::before {
+      border-right-color: #0077b5;
+    }
+
+    /* Telegram */
+    .psi-telegram .psi-social-button-text {
+      background-color: #0088cc;
+    }
+
+    .psi-telegram .psi-social-button-text::before {
+      border-right-color: #0088cc;
+    }
+
+    /* Gmail */
+    .psi-gmail .psi-social-button-text {
+      background-color: #ff6600;
+    }
+
+    .psi-gmail .psi-social-button-text::before {
+      border-right-color: #ff6600;
+    }
+
+    /* GitHub */
+    .psi-github .psi-social-button-text {
+      background-color: #333;
+    }
+
+    .psi-github .psi-social-button-text::before {
+      border-right-color: #333;
+    }
+
+
+
+    /* ==============================================
+       END OF PORTABLE SOCIAL ICONS CSS
+       ============================================== */
+  </style>
+</head>
+
+<body>
+  <!-- Social Links Section -->
+  <section class="psi-social-section" id="social">
+    <img src="https://i.pravatar.cc/150?img=12" alt="Avatar" class="psi-avatar">
+    
+    <div class="psi-social-links">
+    <a href="https://linkedin.com" target="_blank" class="psi-social-button psi-linkedin">
+      <div class="psi-social-button-icon">
+        <i class="fab fa-linkedin-in"></i>
+      </div>
+      <div class="psi-social-button-text">LinkedIn</div>
+    </a>
+    <a href="https://instagram.com" target="_blank" class="psi-social-button psi-instagram">
+      <div class="psi-social-button-icon">
+        <i class="fab fa-instagram"></i>
+      </div>
+      <div class="psi-social-button-text">Instagram</div>
+    </a>
+    <a href="https://wa.me/" target="_blank" class="psi-social-button psi-whatsapp">
+      <div class="psi-social-button-icon">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <div class="psi-social-button-text">WhatsApp</div>
+    </a>
+    <a href="mailto:contact@example.com" class="psi-social-button psi-gmail">
+      <div class="psi-social-button-icon">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <div class="psi-social-button-text">Mail</div>
+    </a>
+    <a href="https://t.me/" target="_blank" class="psi-social-button psi-telegram">
+      <div class="psi-social-button-icon">
+        <i class="fab fa-telegram-plane"></i>
+      </div>
+      <div class="psi-social-button-text">Telegram</div>
+    </a>
+    </div>
+   
+  </section>
+
+</body>
+
+</html>
