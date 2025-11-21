@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Blog Grid</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .blog-section {
+      padding: 80px 20px;
+      text-align: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* GRID */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    /* BLOG CARD */
+    .blog-card {
+      background: #ffffff;
+      border-radius: 6px;
+      border: 1px solid #e6e6e6;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+      margin-bottom: 25px;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
+
+    .blog-img img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .blog-card:hover .blog-img img {
+      transform: scale(1.06);
+    }
+
+    .blog-content {
+      padding: 22px 24px;
+      text-align: left;
+    }
+
+    .blog-content h3 {
+      font-size: 1.1em;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .blog-content p {
+      font-size: 0.95em;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .blog-date {
+      display: block;
+      font-size: 0.75em;
+      color: #c74b4b;
+      font-weight: 600;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .blog-meta {
+      font-size: 0.8em;
+      color: #888;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .blog-btn {
+      display: inline-block;
+      font-size: 0.75em;
+      letter-spacing: 1.4px;
+      color: #333;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .blog-btn:hover {
+      color: #c74b4b;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .blog-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+</head>
+<body>
+
+  <section class="blog-section">
+
+    <!-- Removed Title & Filter Buttons -->
+
+    <div class="blog-grid">
+
+      <!-- BLOG CARD 1 -->
+      <div class="blog-card design">
+        <div class="blog-img">
+          <img src="https://picsum.photos/600/400?random=1" alt="Blog Image">
+        </div>
+        <div class="blog-content">
+          <h3>Understanding Modern Web Design Trends</h3>
+          <span class="blog-date">January 1, 2025</span>
+          <div class="blog-meta">
+            <span>💬 5 Comments</span>
+            <span>⏱ 4 Minutes</span>
+          </div>
+          <p>Discover the latest UI/UX trends that transform websites into powerful digital experiences.</p>
+          <a href="#" class="blog-btn">Read More</a>
+        </div>
+      </div>
+
+      <!-- BLOG CARD 2 -->
+      <div class="blog-card branding">
+        <div class="blog-img">
+          <img src="https://picsum.photos/600/400?random=2" alt="Blog Image">
+        </div>
+        <div class="blog-content">
+          <h3>Why Personal Branding Matters in 2025</h3>
+          <span class="blog-date">January 1, 2025</span>
+          <div class="blog-meta">
+            <span>💬 5 Comments</span>
+            <span>⏱ 4 Minutes</span>
+          </div>
+          <p>Learn how to build an authentic personal brand that opens doors for new opportunities.</p>
+          <a href="#" class="blog-btn">Read More</a>
+        </div>
+      </div>
+
+      <!-- BLOG CARD 3 -->
+      <div class="blog-card productivity">
+        <div class="blog-img">
+          <img src="https://picsum.photos/600/400?random=3" alt="Blog Image">
+        </div>
+        <div class="blog-content">
+          <h3>Top 10 Productivity Tools for Developers</h3>
+          <span class="blog-date">January 1, 2025</span>
+          <div class="blog-meta">
+            <span>💬 5 Comments</span>
+            <span>⏱ 4 Minutes</span>
+          </div>
+          <p>Boost your workflow with the most effective tools used by top developers worldwide.</p>
+          <a href="#" class="blog-btn">Read More</a>
+        </div>
+      </div>
+
+      <!-- BLOG CARD 4 -->
+      <div class="blog-card design">
+        <div class="blog-img">
+          <img src="https://picsum.photos/600/400?random=4" alt="Blog Image">
+        </div>
+        <div class="blog-content">
+          <h3>Creating Stunning UI Effects for Modern Websites</h3>
+          <span class="blog-date">January 1, 2025</span>
+          <div class="blog-meta">
+            <span>💬 5 Comments</span>
+            <span>⏱ 5 Minutes</span>
+          </div>
+          <p>Interactive animations, smooth motion, and futuristic design elements to elevate user experience.</p>
+          <a href="#" class="blog-btn">Read More</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Load More Removed -->
+
+  </section>
+
+</body>
+</html>

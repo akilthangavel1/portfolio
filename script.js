@@ -165,12 +165,96 @@ class SeminarsGallery {
 }
 
 /**
+ * Contact Section Animation Module
+ * Handles the entrance animation for social buttons
+ */
+class ContactAnimation {
+    constructor() {
+        this.avatar = null;
+        this.buttons = [];
+        this.initialized = false;
+    }
+
+    /**
+     * Initialize contact section animations
+     * @returns {boolean} Success status
+     */
+    init() {
+        this.avatar = document.getElementById('psiAvatar');
+        this.buttons = Array.from(document.querySelectorAll('.psi-social-button'));
+
+        if (!this.avatar || this.buttons.length === 0) {
+            console.warn('Contact animation: Avatar or buttons not found');
+            return false;
+        }
+
+        try {
+            this.setupEntranceAnimation();
+            this.initialized = true;
+            console.log('Contact animation: Successfully initialized');
+            return true;
+        } catch (error) {
+            console.error('Contact animation: Initialization failed', error);
+            return false;
+        }
+    }
+
+    /**
+     * Setup the entrance animation for social buttons
+     * @private
+     */
+    setupEntranceAnimation() {
+        const avatarRect = this.avatar.getBoundingClientRect();
+        const avatarCenter = {
+            x: avatarRect.left + avatarRect.width / 2,
+            y: avatarRect.top + avatarRect.height / 2
+        };
+
+        const baseDelay = 150;
+        const initialScale = 0.6;
+        const dropBelow = 20;
+        const duration = 800;
+        const easing = 'cubic-bezier(.2,.8,.2,1)';
+
+        this.buttons.forEach((btn, index) => {
+            const btnRect = btn.getBoundingClientRect();
+            const btnCenter = {
+                x: btnRect.left + btnRect.width / 2,
+                y: btnRect.top + btnRect.height / 2
+            };
+
+            const dx = avatarCenter.x - btnCenter.x;
+            const dy = avatarCenter.y - btnCenter.y + dropBelow;
+
+            btn.style.transition = `transform ${duration}ms ${easing}, opacity ${Math.max(200, duration/2)}ms ease`;
+            btn.style.transform = `translate(${dx}px, ${dy}px) scale(${initialScale})`;
+            btn.style.opacity = '0';
+            btn.style.pointerEvents = 'none';
+
+            const delay = index * baseDelay + 150;
+
+            setTimeout(() => {
+                btn.style.transform = 'translate(0,0) scale(1)';
+                btn.style.opacity = '1';
+
+                const restorePointer = () => {
+                    btn.style.pointerEvents = '';
+                    btn.removeEventListener('transitionend', restorePointer);
+                };
+                btn.addEventListener('transitionend', restorePointer);
+            }, delay);
+        });
+    }
+}
+
+/**
  * Portfolio Application Controller
  * Manages all JavaScript functionality for the portfolio
  */
 class PortfolioApp {
     constructor() {
         this.seminarsGallery = new SeminarsGallery();
+        this.contactAnimation = new ContactAnimation();
         this.modules = [];
     }
 
@@ -184,6 +268,11 @@ class PortfolioApp {
             // Initialize seminars gallery
             if (this.seminarsGallery.init()) {
                 this.modules.push('seminarsGallery');
+            }
+
+            // Initialize contact animation
+            if (this.contactAnimation.init()) {
+                this.modules.push('contactAnimation');
             }
 
             // Add other modules here as needed
@@ -236,7 +325,8 @@ class PortfolioApp {
         return {
             initialized: this.modules.length > 0,
             modules: this.modules,
-            seminarsGallery: this.seminarsGallery.initialized
+            seminarsGallery: this.seminarsGallery.initialized,
+            contactAnimation: this.contactAnimation.initialized
         };
     }
 }
@@ -267,5 +357,5 @@ if (document.readyState === 'loading') {
 
 // Export for module systems (if needed)
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { PortfolioApp, SeminarsGallery, SEMINARS_CONFIG };
+    module.exports = { PortfolioApp, SeminarsGallery, ContactAnimation, SEMINARS_CONFIG };
 }
