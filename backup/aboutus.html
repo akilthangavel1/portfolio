@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>About — 4 Card Layout</title>
+<style>
+  :root{
+    --bg:#f2f3f1;
+    --card:#ffffff;
+    --muted:#555;
+    --accent:#00b5ff;
+    --radius:26px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:var(--bg);
+    color:#222;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* Layout grid to mimic the reference: 3 columns with two stacked on right */
+  .wrap{
+    width:95%;
+    max-width:95%;
+    margin:36px auto;
+    padding:22px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: 420px 420px 480px;
+    grid-template-rows: auto 300px;
+    gap:26px;
+  }
+
+  /* Left tall card — spans two rows */
+  .card {
+    background:var(--card);
+    padding:34px;
+    border-radius:var(--radius);
+    box-shadow:0 6px 30px rgba(8,8,8,0.06);
+  }
+
+  .card.left{
+    grid-column:1 / 2;
+    grid-row:1 / 3;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:44px 40px;
+  }
+
+  .profile-large{
+    width:250px;
+    border-radius:12px;
+    display:block;
+    margin:0 auto 22px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  }
+
+  .hello{
+    font-size:18px;
+    letter-spacing:1px;
+    margin:6px 0;
+  }
+  .name-pill{
+    background:var(--accent);
+    color:#fff;
+    padding:6px 12px;
+    border-radius:10px;
+    margin-left:8px;
+    font-weight:700;
+    display:inline-block;
+  }
+  .title{
+    font-size:36px;
+    margin:12px 0 8px;
+    font-weight:800;
+  }
+  .desc{
+    color:var(--muted);
+    line-height:1.6;
+    max-width:620px;
+    margin:12px auto 6px;
+    font-size:15.5px;
+  }
+  .italic{
+    color:#444;
+    font-style:italic;
+    margin-top:18px;
+  }
+
+  /* Middle tall card (phone) */
+  .card.mid{
+    grid-column:2 / 3;
+    grid-row:1 / 3;
+    padding:34px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .center-title{
+    font-size:22px;
+    font-weight:800;
+    margin-bottom:18px;
+    text-align:center;
+  }
+
+
+  /* Top-right card */
+  .card.top-right{
+    grid-column:3 / 4;
+    grid-row:1 / 2;
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+
+  .side-thumb{
+    width:160px;
+    height:160px;
+    border-radius:10px;
+    object-fit:cover;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+  }
+
+  .magic-title{
+    font-size:22px;
+    line-height:1.05;
+    font-weight:800;
+    margin:0;
+  }
+  .magic-sub{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:14.5px;
+  }
+
+  /* Waving hand: small SVG placed near image */
+  .hand-svg{
+    width:62px;
+    height:62px;
+    position:relative;
+    transform-origin:center;
+    animation:wave 1.6s infinite ease-in-out;
+    margin-left:-12px;
+  }
+
+  @keyframes wave{
+    0%{ transform: rotate(0deg) translateY(0px); }
+    25%{ transform: rotate(-10deg) translateY(-3px); }
+    50%{ transform: rotate(0deg) translateY(0px); }
+    75%{ transform: rotate(10deg) translateY(-3px); }
+    100%{ transform: rotate(0deg) translateY(0px); }
+  }
+
+  /* Bottom-right card */
+  .card.bottom-right{
+    grid-column:3 / 4;
+    grid-row:2 / 3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:visible;
+  }
+
+  .egg-layout{
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+  .egg-thumb{
+    width:170px;
+    height:170px;
+    border-radius:10px;
+    object-fit:cover;
+    box-shadow:0 6px 20px rgba(0,0,0,0.04);
+  }
+
+  .egg-text{
+    max-width:200px;
+  }
+  .egg-title{
+    font-size:22px;
+    font-weight:800;
+    margin:0;
+    line-height:1.05;
+  }
+  .egg-sub{
+    color:var(--muted);
+    margin-top:8px;
+    font-size:14.5px;
+  }
+
+  /* Magnifier circle: background uses same image but scaled */
+  .magnifier {
+    width:88px;
+    height:88px;
+    border-radius:50%;
+    border:6px solid rgba(255,255,255,0.9);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    position:absolute;
+    right:70px;
+    bottom:36px;
+    background-image: url('/mnt/data/ak.png');
+    background-repeat:no-repeat;
+    background-size:210%; /* bigger to simulate zoom */
+    background-position: 42% 42%;
+    cursor:pointer;
+  }
+
+  .magnifier:after{
+    content:"";
+    position:absolute;
+    right:-20px;
+    bottom:-20px;
+    width:36px;
+    height:36px;
+    border-radius:8px;
+    background:#111;
+    transform:rotate(20deg);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    opacity:0.9;
+  }
+
+  /* small responsive adjustments */
+  @media (max-width:1100px){
+    .grid{ grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto; }
+    .card.left{ grid-column:1 / 3; grid-row:1 / 2; }
+    .card.mid{ grid-column:1 / 2; grid-row:2 / 3; }
+    .card.top-right{ grid-column:2 / 3; grid-row:2 / 3; }
+    .card.bottom-right{ grid-column:1 / 3; grid-row:3 / 4; }
+    .magnifier { right:32px; bottom:12px; }
+  }
+
+  @media (max-width:620px){
+    .grid{ grid-template-columns: 1fr; grid-auto-rows:auto; }
+    .card.left,.card.mid,.card.top-right,.card.bottom-right{ grid-column:auto; grid-row:auto; }
+    .profile-large{width:200px}
+    .phone-mock{ width:200px; height:420px; border-radius:30px; }
+    .side-thumb{ width:120px; height:120px; }
+    .egg-thumb{ width:120px; height:120px; }
+    .magnifier{ display:none; }
+  }
+
+  /* small utility */
+  .muted{ color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="grid">
+
+      <!-- LEFT: Main Intro (spans two rows) -->
+      <section class="card left" aria-labelledby="intro-title">
+        
+        <div class="hello">HELLO, I AM <span class="name-pill">AKIL</span></div>
+        <h2 id="intro-title" class="title">A UX PROFESSIONAL</h2>
+        <p class="desc">
+          I design clarity-first digital products and automate workflows with AI.
+          I combine strong interaction design with modern engineering to ship delightful, useful products.
+        </p>
+        <div class="italic">What does bold UX + AI look like?</div>
+      </section>
+
+      <!-- MIDDLE: Phone Frame -->
+      <section class="card mid" aria-labelledby="phone-title">
+        <div class="center-title" id="phone-title">SNAP, TAP...<br>AND A SECRET TAG.</div>
+      </section>
+
+      <!-- TOP-RIGHT: Magic starts here + waving hand overlay -->
+      <section class="card top-right" aria-labelledby="magic-title">
+        
+
+        <div>
+          <h3 id="magic-title" class="magic-title">MAGIC STARTS HERE.<br><span style="font-weight:900">BUT WHO WAVED?</span></h3>
+          <p class="magic-sub">You've seen this many times. Click to meet one of the magicians.</p>
+        </div>
+
+        <!-- decorative waving hand svg placed visually near thumb -->
+        <div style="position:relative; left:-68px; top:-6px;">
+          <svg class="hand-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 34c0-6 4-10 10-10s10 4 10 10v8"/> <!-- palm -->
+              <path d="M14 32c0-3 2-6 5-6s5 3 5 6" /> <!-- thumb -->
+              <path d="M32 22c0-3 2-5 4-5s4 2 4 5" /> <!-- finger 1 -->
+              <path d="M38 20c0-2 1-3 3-3s3 1 3 3" /> <!-- finger 2 -->
+              <path d="M28 20c0-2 1-3 2-3s2 1 2 3" /> <!-- finger 3 -->
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- BOTTOM-RIGHT: Spot the Easter Egg + magnifier -->
+      <section class="card bottom-right" aria-labelledby="egg-title">
+        <div class="egg-layout">
+          
+          <div class="egg-text">
+            <h4 id="egg-title" class="egg-title">SAVE INK<br><span style="font-weight:900">SPOT THE EASTER EGG.</span></h4>
+            <p class="egg-sub">A tiny detail hides in plain sight. Hover or tap the magnifier to peek closer.</p>
+          </div>
+        </div>
+
+        <!-- magnifier circle: background is the same portrait but zoomed -->
+        <div class="magnifier" title="Magnify"></div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- small optional script: when clicking magnifier, slightly change background-position to simulate moving focus -->
+  <script>
+    (function(){
+      const mag = document.querySelector('.magnifier');
+      let positions = [
+        '42% 42%',
+        '50% 48%',
+        '46% 54%',
+        '38% 44%'
+      ];
+      let i = 0;
+      if(!mag) return;
+      mag.addEventListener('click', ()=>{
+        i = (i+1) % positions.length;
+        mag.style.backgroundPosition = positions[i];
+        // quick "pop" effect
+        mag.animate([{ transform: 'scale(0.98)'}, { transform: 'scale(1.06)'}, { transform: 'scale(1)'}], {duration:260, easing:'cubic-bezier(.2,.8,.2,1)'});
+      });
+      // also on hover for desktop give slight zoom movement
+      mag.addEventListener('mouseenter', ()=>{
+        mag.style.transition='transform .28s ease';
+        mag.style.transform='scale(1.04)';
+      });
+      mag.addEventListener('mouseleave', ()=>{
+        mag.style.transform='scale(1)';
+      });
+    })();
+  </script>
+</body>
+</html>
